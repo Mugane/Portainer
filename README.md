@@ -1,1 +1,2 @@
-# Portainer
+# Portainer Templates
+Custom Portainer templates
