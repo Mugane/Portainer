@@ -8,6 +8,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-db}
       MYSQL_USER: ${MYSQL_USER:-admin}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MOUNT_ROOT: ${MOUNT_ROOT:-}
     ports:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
