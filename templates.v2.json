@@ -47,7 +47,7 @@
       "title": "MariaDB",
       "description": "MariaDB v10.6+ Container with default settings",
       "categories": ["database"],
-      "platform": "linux",
+      "platform": "linux", 
       "logo": "https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent-300x245.png",
       "image": "mariadb:latest",
       "env": [
