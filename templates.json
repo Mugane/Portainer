@@ -64,7 +64,7 @@
         {
           "name": "MYSQL_DATABASE",
           "label": "Database name",
-          "default": "db"
+          "default": "db",
           "description": "Space-separated list of database names to create"
         },
         {
@@ -85,7 +85,7 @@
         {
           "name": "MOUNT_ROOT",
           "label": "Mount root",
-          "default": "/var/lib/portainer"
+          "default": "/var/lib/portainer",
           "description": "Optional, Path on host to use for the persistent data directory. Data files will be stored in the mount root under the ./container-name/data subdirectory"
         },
         {
