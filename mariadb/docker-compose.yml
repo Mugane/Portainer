@@ -8,6 +8,12 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-db}
       MYSQL_USER: ${MYSQL_USER:-admin}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SET_Name: ${Name}
+      SET_name: ${name}
+      SET_container: ${container}
+      SET_Container: ${Container}
+      SET_container_name: ${container_name}
+      SET_Container_name: ${Container_name}
     ports:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
