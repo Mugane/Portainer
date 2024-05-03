@@ -93,7 +93,7 @@
           "label": "Optional parameters",
           "default": "",
           "description": "Optional parameters to the mariadbd daemon such as `--skip-grant-tables` or `--sql_mode=NO_ENGINE_SUBSTITUTION`"
-        }.
+        },
         {
           "name": "MYSQL_ROOT_HOST",
           "default": "%",
