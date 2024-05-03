@@ -85,8 +85,8 @@
         }
       ],
       "repository": {
-        "url": "https://raw.githubusercontent.com/Mugane/Portainer",
-        "stackfile": "main/mariadb/docker-compose.yml"
+        "url": "https://github.com/Mugane/Portainer",
+        "stackfile": "mariadb/docker-compose.yml"
       }
     }    
   ]
