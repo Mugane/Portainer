@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: ${CONTAINER_NAME:-mariadb}
+    # container_name: ${CONTAINER_NAME:-mariadb}
     image: mariadb:${MYSQL_VERSION:-latest}
     restart: always
     environment:
@@ -28,4 +28,4 @@ services:
           echo \"FLUSH PRIVILEGES;\" >> /docker-entrypoint-initdb.d/init.sql;
         fi;
       fi;
-      exec /usr/local/bin/docker-entrypoint.sh mariadbd"
+      exec /usr/local/bin/docker-entrypoint.sh mariadbd $${MYSQLD_PARAMETERS:-}"
