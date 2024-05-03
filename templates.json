@@ -69,7 +69,7 @@
         },
         {
           "name": "MYSQL_DATABASE",
-          "label": "Database name",
+          "label": "Database name(s)",
           "default": "db",
           "description": "Space-separated list of database names to create"
         },
