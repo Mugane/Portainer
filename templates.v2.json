@@ -49,7 +49,6 @@
       "categories": ["database"],
       "platform": "linux", 
       "logo": "https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent-300x245.png",
-      "image": "mariadb:latest",
       "env": [
         {
           "name": "MYSQL_VERSION",
@@ -85,15 +84,8 @@
           "preset": true
         }
       ],
-      "ports": ["3306/tcp"],
-      "volumes": [
-        {
-          "container": "/var/lib/mysql"
-        }
-      ],
       "repository": {
         "url": "https://raw.githubusercontent.com/Mugane/Portainer/main/mariadb/docker-compose.yml",
-        "stackfile": "docker-compose.yml"
       }
     }    
   ]
