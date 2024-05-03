@@ -43,7 +43,7 @@
       ]
     },
     {
-      "type": 1,
+      "type": 2,
       "title": "MariaDB",
       "description": "MariaDB v10.6+ Container with default settings",
       "categories": ["database"],
@@ -90,7 +90,11 @@
         {
           "container": "/var/lib/mysql"
         }
-      ]
+      ],
+      "repository": {
+        "url": "https://raw.githubusercontent.com/Mugane/Portainer/main/mariadb/docker-compose.yml",
+        "stackfile": "docker-compose.yml"
+      }
     }    
   ]
 }
