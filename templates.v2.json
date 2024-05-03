@@ -85,7 +85,7 @@
           "preset": true
         }
       ],
-      "ports": ["${MYSQL_PORT:-3306}/tcp"],
+      "ports": ["3306/tcp"],
       "volumes": [
         {
           "container": "/var/lib/mysql"
