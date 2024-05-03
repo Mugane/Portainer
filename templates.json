@@ -43,7 +43,7 @@
       ]
     },
     {
-      "type": 2,
+      "type": 3,
       "title": "MariaDB",
       "description": "MariaDB v10.6+ Container with default settings",
       "categories": ["database"],
