@@ -52,6 +52,12 @@
       "notes": "Valid MariaDB image versions are listed on the [Docker hub](https://hub.docker.com/_/mariadb)",
       "env": [
         {
+          "name": "CONTAINER_NAME",
+          "label": "Container name",
+          "default": "mariadb",
+          "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
+        },
+        {
           "name": "MYSQL_VERSION",
           "label": "MariaDB version",
           "default": "latest",
