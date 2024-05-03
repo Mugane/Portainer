@@ -55,7 +55,7 @@
           "name": "MYSQL_VERSION",
           "label": "MariaDB version",
           "default": "latest"
-        }
+        },
         {
           "name": "MYSQL_ROOT_PASSWORD",
           "label": "Root password"
