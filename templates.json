@@ -123,7 +123,7 @@
         {
           "name": "CONTAINER_NAME",
           "label": "Container name",
-          "default": "mariadb",
+          "default": "nginx-php",
           "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
         },
         {
