@@ -112,7 +112,7 @@
       }
     },
     {
-      "type": 1,
+      "type": 3,
       "title": "NGINX-PHP",
       "description": "PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux",
       "categories": ["servers"],
