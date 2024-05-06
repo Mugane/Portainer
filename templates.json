@@ -141,7 +141,7 @@
         {
           "name": "PHP_WEB_ROOT",
           "label": "Mount root",
-          "default": "\"C:\\Users\\Admin\\Documents\\Docker\\Projects\\Project Name\\app\"",
+          "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
           "description": "Path on host to use for the PHP application root."
         },
         {
