@@ -91,7 +91,7 @@
         {
           "name": "MOUNT_ROOT",
           "label": "Mount root",
-          "default": "C:/Users/Admin/Documents/Docker/Projects/Persistent\\ Data",
+          "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Persistent Data\"",
           "description": "Optional, Path on host to use for the persistent data directory. Data files will be stored in the mount root under the ./container-name/data subdirectory. For linux, `/var/lib/portainer` is recommended."
         },
         {
