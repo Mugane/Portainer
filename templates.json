@@ -272,6 +272,18 @@
           "default": "8081"
         },
         {
+          "name": "PHP_EXTENSIONS",
+          "label": "Additional extensions",
+          "description": "Comma-separated list of additional PHP extensions to install - without spaces! (e.g. 'pgsql,pdo_mysql,sqlite3,odbc,redis,imagick,bcmath,imap,ldap,soap,tidy,xmlrpc,zlib')",
+          "default": "8081"
+        },
+        {
+          "name": "PHP_MEMORY_LIMIT",
+          "label": "Memory limit",
+          "description": "PHP script memory limit",
+          "default": "128M"
+        },
+        {
           "name": "PHP_WEB_ROOT",
           "label": "Mount root",
           "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
