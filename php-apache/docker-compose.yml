@@ -1,0 +1,9 @@
+services:
+  web:
+    image: php:${VERSION:-latest}
+    container_name: ${CONTAINER_NAME:-PHP}
+    restart: ${RESTART:-always}
+    ports:
+      - "${PORT:-8081}:8080"
+    volumes:
+      - ${PHP_WEB_ROOT:-./app}:/var/www/html
