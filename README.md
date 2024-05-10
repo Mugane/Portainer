@@ -2,7 +2,7 @@
 
 ### Why?
 
-This is a dockerized version of Portainer that can be trivially run.
+This is a dockerized version of Portainer that can be trivially run. App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
 
 #### Running Portianer
 
