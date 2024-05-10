@@ -275,7 +275,7 @@
           "name": "PHP_EXTENSIONS",
           "label": "Additional extensions",
           "description": "Comma-separated list of additional PHP extensions to install - without spaces! (e.g. 'pgsql,pdo_mysql,sqlite3,odbc,redis,imagick,bcmath,imap,ldap,soap,tidy,xmlrpc,zlib')",
-          "default": "8081"
+          "default": ""
         },
         {
           "name": "PHP_MEMORY_LIMIT",
