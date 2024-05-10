@@ -16,7 +16,7 @@ Prerequisites: You will need docker installed and either curl/wget or git.
     curl -o docker-compose.yml https://raw.githubusercontent.com/Mugane/Portainer/main/docker-compose.yml
     
     # Run Docker Compose using the downloaded file
-    docker compose -f docker-compose.yml up -d
+    docker compose up -d
     ```
 
 2. Clone & Run
