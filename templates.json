@@ -284,6 +284,12 @@
           "default": "128M"
         },
         {
+          "name": "APACHE_SERVER_NAME",
+          "label": "Server name",
+          "default": "localhost",
+          "description": "Apache server name (domain name)"
+        },
+        {
           "name": "PHP_WEB_ROOT",
           "label": "Mount root",
           "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
