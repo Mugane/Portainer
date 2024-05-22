@@ -7,6 +7,6 @@ services:
       PHP_EXTENSIONS: ${PHP_EXTENSIONS:-}
       PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT:-}
     ports:
-      - "${PORT:-8081}:8080"
+      - "${PORT:-8081}:80"
     volumes:
       - ${PHP_WEB_ROOT:-./app}:/var/www/html
