@@ -17,5 +17,5 @@ services:
         echo 'ServerName $$APACHE_SERVER_NAME' >> /etc/apache2/apache2.conf;
       else
         sed -i 's/^ServerName .*/ServerName $$APACHE_SERVER_NAME/' /etc/apache2/apache2.conf;
-      fi
+      fi;
       apache2-foreground"
