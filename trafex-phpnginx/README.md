@@ -11,3 +11,8 @@ The [Trafex PHP-Apache](https://github.com/TrafeX/docker-php-nginx/tree/master) 
 ### Notes
 
 [tbd]
+
+
+### To-do
+
+- Add Options for Composer, xdebug, DNS and Mail?
