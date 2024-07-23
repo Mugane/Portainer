@@ -1,0 +1,33 @@
+{
+  "type": 3,
+  "title": "NGINX Hello World",
+  "description": "NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver.",
+  "categories": ["servers"],
+  "platform": "linux", 
+  "logo": "https://nginx.org/nginx.png",
+  "notes": "",
+  "env": [
+    {
+      "name": "CONTAINER_NAME",
+      "label": "Container name",
+      "default": "nginx-php",
+      "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
+    },
+    {
+      "name": "DOMAIN",
+      "label": "Domain name",
+      "default": "",
+      "description": "Enter full domain name (without the http:// part) for Traefik integration"
+    },
+    {
+      "name": "PORT",
+      "label": "Port",
+      "description": "Port to use for the NGINX server (check that it is not in use) - optional if using Traefik",
+      "default": "8080"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/Mugane/Portainer",
+    "stackfile": "templates/nginx-hello/docker-compose.yml"
+  }
+}

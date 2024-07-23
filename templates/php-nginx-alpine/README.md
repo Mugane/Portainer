@@ -10,7 +10,7 @@ The [Trafex PHP-Apache](https://github.com/TrafeX/docker-php-nginx/tree/master) 
 
 ### Notes
 
-[tbd]
+This image has zshell (/bin/sh) and is minimal which could causee some issues if you need to manage the server in development.
 
 
 ### To-do

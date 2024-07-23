@@ -1,0 +1,23 @@
+name: Collate and Publish ./templates.json
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Collate Script
+        run: ./collate.sh
+      # - name: Publish Templates.json
+      #   run: |
+      #     echo "Publishing templates.json..."
+      #     curl -X PUT -H "Content-Type: application/json" "https://raw.githubusercontent.com/Mugane/Portainer/main/templates.json" --data-binary ./templates/templates.json
+      - name: Upload templates.json
+        uses: actions/upload-file@v2
+        with:
+          path: ./templates.json
+          dest: ./templates.json

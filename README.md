@@ -35,4 +35,12 @@ Prerequisites: You will need docker installed and either curl/wget or git.
 
 This repo also contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to `https://raw.githubusercontent.com/Mugane/Portainer/main/templates.json`
 
+Additional templates may be found by using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
+
+### Modifying the templates
+
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
+
+If present, DO NOT modify `templates.json` directly, it will be overwritten. Edit the json and optional docker-compose.yml files under the `templates` folder, then run the `collate.sh` script to regenerate the template.json file with the full list of templates. 
+
+By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
