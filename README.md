@@ -4,6 +4,8 @@
 
 This is a dockerized version of Portainer that can be trivially run. App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
 
+This is a fairly new repo and will be updated frequently. The goal is to establish a set of core templates for rapid containerized development or production deployments. 
+
 #### Running Portianer
 
 Prerequisites: You will need docker installed and either curl/wget or git.
@@ -33,9 +35,10 @@ Prerequisites: You will need docker installed and either curl/wget or git.
 
 ### Portainer Stack templates
 
-This repo also contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to `https://raw.githubusercontent.com/Mugane/Portainer/main/templates.json`
+NOTE: Deprecated: This repo also contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to `https://raw.githubusercontent.com/Mugane/Portainer/main/templates.json`
+***Automatic deployment to github pages is being tested/debugged, for now please run the collate.sh script to generate the templates.json file.***
 
-Additional templates may be found by using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
+While templates are being developed and customized, you might find additional useful templates using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
 
 ### Modifying the templates
 
