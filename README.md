@@ -35,8 +35,9 @@ Prerequisites: You will need docker installed and either curl/wget or git.
 
 ### Portainer Stack templates
 
-NOTE: Deprecated: This repo also contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to `https://raw.githubusercontent.com/Mugane/Portainer/main/templates.json`
-***Automatic deployment to github pages is being tested/debugged, for now please run the collate.sh script to generate the templates.json file.***
+This repo contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to (https://mugane.github.io/Portainer/templates.json)
+
+Commits to the `main` branch automatically trigger the collate.sh script to generate and publish the final `templates.json` file to [GitHub Pages](https://mugane.github.io/Portainer/templates.json). `templates.json` is not present in the `main` branch to avoid confusion when making source updates.
 
 While templates are being developed and customized, you might find additional useful templates using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
 
@@ -44,6 +45,6 @@ While templates are being developed and customized, you might find additional us
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
-If present, DO NOT modify `templates.json` directly, it will be overwritten. Edit the json and optional docker-compose.yml files under the `templates` folder, then run the `collate.sh` script to regenerate the template.json file with the full list of templates. 
+Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates. 
 
 By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
