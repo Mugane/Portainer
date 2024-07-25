@@ -1,12 +1,12 @@
-name: Build and Deploy to GitHub Pages (not yet working, has to be tested live)
-
+name: Build and Deploy to GitHub Pages
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
+    paths:
+      - './templates/*.json'
+      - './collate.sh'
 jobs:
-  build-and-deploy:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23,5 +23,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages # Ensure this matches your GitHub Pages branch
+          publish_branch: gh-pages
           publish_dir: ./latest
