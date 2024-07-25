@@ -14,10 +14,11 @@ jobs:
         run: ./collate.sh
       - name: Prepare latest directory
         run: |
-          mkdir -p ./latest && mv ./templates.json ./latest/
+          mkdir -p ./latest
+          cp ./templates.json ./latest/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./latest
