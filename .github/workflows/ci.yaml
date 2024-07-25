@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages (not yet working, has to be tested live)
 
 on:
   push:
@@ -8,6 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      push: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -16,10 +19,9 @@ jobs:
           ./collate.sh
           mkdir -p latest
           mv templates.json latest/
-
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages # Ensure this matches your GitHub Pages branch
           publish_dir: ./latest
