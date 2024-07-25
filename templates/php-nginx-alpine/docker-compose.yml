@@ -1,9 +1,0 @@
-services:
-  web:
-    image: trafex/php-nginx:${VERSION:-latest}
-    container_name: ${CONTAINER_NAME:-PHP}
-    restart: ${RESTART:-always}
-    ports:
-      - "${TRAFEX_PORT:-8080}:8080"
-    volumes:
-      - ${PHP_WEB_ROOT:-./app}:/var/www/html

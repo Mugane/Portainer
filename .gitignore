@@ -1,5 +1,0 @@
-*.zip
-*.tar.gz
-.env
-./templates.json
-/data/
