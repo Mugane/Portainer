@@ -11,14 +11,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
-      # Assuming 'collate.sh' is your script that generates 'templates.json'
-      - name: Run Collate Script
-        run: ./collate.sh
-
-      # Create a directory named 'latest' and move 'templates.json' into it
-      - name: Prepare for Deployment
+      - name: Collate Templates & Package for Deployment
         run: |
+          ./collate.sh
           mkdir -p latest
           mv templates.json latest/
 
