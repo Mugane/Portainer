@@ -12,14 +12,12 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Collate Script
         run: ./collate.sh
-      # - name: Upload templates.json
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: templates.json
-      #     path: templates.json
+      - name: Prepare latest directory
+        run: |
+          mkdir -p ./latest && mv ./templates.json ./latest/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./templates-json
+          publish_dir: ./latest
