@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -6,30 +6,25 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Assuming 'collate.sh' is your script that generates 'templates.json'
       - name: Run Collate Script
         run: ./collate.sh
-      - name: Upload templates.json as Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: templates-json
-          path: ./templates.json
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-    steps:
+      # Create a directory named 'latest' and move 'templates.json' into it
+      - name: Prepare for Deployment
+        run: |
+          mkdir -p latest
+          mv templates.json latest/
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: templates-json
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./latest
