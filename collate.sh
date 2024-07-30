@@ -6,6 +6,7 @@ for file in ./templates/*.json; do # collate all the json files in ./templates s
   sed -e 's/^/    /'  -e 's/\\n\\s*$//' "$file" >> ./templates.json # add spaces for formatting, remove trailing space/newlines
   echo "," >> ./templates.json # separate each template with a comma
 done
-sed -i -z '$s/..$//' ./templates.json # take off the last comma (and ignore the last newline character)
-printf "\n  ]\n}" >> ./templates.json # close the json object collection
+# sed -i -z '$s/..$//' ./templates.json # take off the last comma (and ignore the last newline character) - this version doesn't work well on zsh
+sed -i '/,/{$d}' ./templates.json # take off the last comma (and ignore the last newline character)
+printf "}\n  ]\n}" >> ./templates.json # close the json object collection
 echo "./templates/ concatenated successfully into ./templates.json"
