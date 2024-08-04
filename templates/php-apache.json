@@ -105,7 +105,7 @@
       "name": "PHP_MEMORY_LIMIT",
       "label": "Memory limit",
       "description": "PHP script memory limit (128M is the default but 256M or 512M is recommended)",
-      "default": "512M"
+      "default": "256M"
     },
     {
       "name": "APACHE_SERVER_NAME",
