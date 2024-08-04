@@ -1,0 +1,66 @@
+{
+  "type": 3,
+  "title": "Traefik: NGINX & PHP (Alpine)",
+  "description": "Reverse-proxied PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux (trafex/php-nginx). Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
+  "categories": [ "Servers", "Production", "Traefik", "HTTPS" ],
+  "platform": "linux", 
+  "logo": "https://nginx.org/nginx.png",
+  "notes": "Valid PHP/NGINX image versions are listed on the [Docker hub](https://hub.docker.com/r/trafex/php-nginx)",
+  "env": [
+    {
+      "name": "CONTAINER_NAME",
+      "label": "Container name",
+      "default": "nginx-php",
+      "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
+    },
+    {
+      "name": "VERSION",
+      "label": "Trafex version",
+      "default": "latest",
+      "description": "Version (see list of valid image versions on the Trafex Docker Hub at https://hub.docker.com/r/trafex/php-nginx/tags)"
+    },
+    {
+      "name": "DOMAIN",
+      "label": "Domain name",
+      "default": "",
+      "description": "Enter full domain name (without the http:// part) for Traefik integration. You MUST set your A records PRIOR to running the stack in order for SSL certificates to be automatically generated correctly."
+    },
+    {
+      "name": "PHP_WEB_ROOT",
+      "label": "Mount root",
+      "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
+      "description": "Path on host to use for the PHP application root. For Windows, enclose in quotes and escape path separators with double-backslashes."
+    },
+    {
+      "name": "RESTART",
+      "label": "Restart",
+      "description": "Restart behavior (on failure or Docker engine restart)",
+      "select": [
+            {
+              "text": "Always restart",
+              "value": "always",
+              "default": true
+            },
+            {
+              "text": "Restart unless stopped",
+              "value": "unless-stopped"
+            },
+            {
+              "text": "Restart on failure",
+              "value": "on-failure"
+            },
+            {
+              "text": "No restart",
+              "value": "no"
+            }            
+      ]          
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/Mugane/Portainer",
+    "stackfile": "templates/traefik-nginx-php-alpine/docker-compose.yml"
+  },
+  "ports": [
+    "8080:8080/tcp"
+  ]
+}
