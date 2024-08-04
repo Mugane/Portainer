@@ -2,7 +2,11 @@
 
 ### Why?
 
-This is a dockerized version of Portainer that can be trivially run. App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
+This is a dockerized version of Portainer that can be trivially run. 
+
+App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
+
+Reverse proxy versions of some public services are provided to facilitate domain mapping and SSL certificate management.
 
 This is a fairly new repo and will be updated frequently. The goal is to establish a set of core templates for rapid containerized development or production deployments. 
 
@@ -45,6 +49,21 @@ While templates are being developed and customized, you might find additional us
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
-Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates. 
+Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates. On windows you can set up a watch by running the `monitor.ps1` script in PowerShell:
+    - Open PowerShell as Administrator, navigate to the Portainer repo folder and run:
+    ```
+    docker run -d -v ${PWD}:/usr/share/nginx/html -p 8080:80 --name portemp nginx:latest
+    Set-ExecutionPolicy RemoteSigned -Scope Process
+    .\monitor.ps1
+    ```
+    - Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings.
 
 By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
+
+### Wish list
+
+The following containers would be nice to have.
+
+Lissy: Caddy, CrateDB, Drupal, Elasticsearch, Ghost, Httpd, Jenkins, Ironfunctions, Joomla, Magento, Minio, Mongo, Plone, PostgreSQL, Redis, Registry, Scality S3, Solr, Urbackup, Blender, Boinc, Gitqlient, Ubuntu, OPC router, softing edgeConnector containers Apache Httpd, influxdb, freescout, wger, [dockge](https://www.youtube.com/watch?v=HEklvsr7q54), [Activepieces](https://www.youtube.com/watch?v=MRm75uTf_A4), [Plane PM](https://www.youtube.com/watch?v=HqKvfDZICBA), [Flowise AI](https://www.youtube.com/watch?v=03RBE72lNf8), [Ory Kratos](https://www.youtube.com/watch?v=T-UPdN1hxKA), umami.is, mamoto,
+
+Other: Geany, Home Assistant
