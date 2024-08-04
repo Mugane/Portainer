@@ -1,0 +1,27 @@
+{
+  "type": 3,
+  "title": "Traefik: NGINX Hello World",
+  "description": "Reverse-proxied NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver. Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
+  "categories": [ "Servers", "Production", "Traefik", "HTTPS" ],
+  "platform": "linux", 
+  "logo": "https://nginx.org/nginx.png",
+  "notes": "",
+  "env": [
+    {
+      "name": "CONTAINER_NAME",
+      "label": "Container name",
+      "default": "nginx-php",
+      "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
+    },
+    {
+      "name": "DOMAIN",
+      "label": "Domain name",
+      "default": "",
+      "description": "Enter full domain name (without the http:// part) for Traefik integration. You MUST set your A records PRIOR to running the stack in order for SSL certificates to be automatically generated correctly."
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/Mugane/Portainer",
+    "stackfile": "templates/traefik-nginx-hello/docker-compose.yml"
+  }
+}
