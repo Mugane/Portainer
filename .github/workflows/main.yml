@@ -1,0 +1,27 @@
+name: Build and Deploy to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - './templates/*.json'
+      - './collate.sh'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Collate Templates & Package for Deployment
+        run: |
+          ./collate.sh
+          mkdir -p latest
+          mv templates.json latest/
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./latest
