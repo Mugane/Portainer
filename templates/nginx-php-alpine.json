@@ -2,7 +2,7 @@
   "type": 3,
   "title": "NGINX & PHP (Alpine)",
   "description": "PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux (trafex/php-nginx)",
-  "categories": ["servers"],
+  "categories": [ "Servers", "Development" ],
   "platform": "linux", 
   "logo": "https://nginx.org/nginx.png",
   "notes": "Valid PHP/NGINX image versions are listed on the [Docker hub](https://hub.docker.com/r/trafex/php-nginx)",
@@ -58,6 +58,9 @@
   ],
   "repository": {
     "url": "https://github.com/Mugane/Portainer",
-    "stackfile": "templates/php-nginx-alpine/docker-compose.yml"
-  }
+    "stackfile": "templates/nginx-php-alpine/docker-compose.yml"
+  },
+  "ports": [
+    "8080:8080/tcp"
+  ]
 }

@@ -2,7 +2,7 @@
   "type": 3,
   "title": "MySQL",
   "description": "MySQL <= 9.0 Container with default settings",
-  "categories": ["database"],
+  "categories": ["Database"],
   "platform": "linux", 
   "logo": "https://www.mysql.com/common/logos/logo-mysql-170x115.png",
   "notes": "Valid MySQL image versions are listed on the [Docker hub](https://hub.docker.com/_/mysql)",

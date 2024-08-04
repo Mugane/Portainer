@@ -2,7 +2,7 @@
   "type": 3,
   "title": "MariaDB",
   "description": "MariaDB v10.6+ Container with default settings",
-  "categories": ["database"],
+  "categories": ["Database"],
   "platform": "linux", 
   "logo": "https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent-300x245.png",
   "notes": "Valid MariaDB image versions are listed on the [Docker hub](https://hub.docker.com/_/mariadb)",

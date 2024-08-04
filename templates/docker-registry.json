@@ -2,7 +2,7 @@
   "type": 1,
   "title": "Registry",
   "description": "Docker image registry",
-  "categories": ["docker"],
+  "categories": ["Docker"],
   "platform": "linux",
   "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
   "image": "registry:latest",
