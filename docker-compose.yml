@@ -1,6 +1,6 @@
 services:
  portainer:
-    image: portainer/portainer-ce:2.19.4
+    image: portainer/portainer-ce:2.20.3
     container_name: ${PORTAINER_CONTAINER_NAME:-Porto}
     restart: always
     # environment:
