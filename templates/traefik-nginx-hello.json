@@ -2,7 +2,7 @@
   "type": 3,
   "title": "Traefik: NGINX Hello World",
   "description": "Reverse-proxied NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver. Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
-  "categories": [ "Servers", "Production", "Traefik", "SSL" ],
+  "categories": [ "Servers", "Production", "Traefik", "HTTPS" ],
   "platform": "linux", 
   "logo": "https://nginx.org/nginx.png",
   "notes": "",
