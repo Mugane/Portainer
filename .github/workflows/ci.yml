@@ -2,9 +2,11 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-    paths:
-      - './templates/*.json'
-      - './collate.sh'
+# Due to an unaddressed bug in GitHub, paths + branches fails to work. Maybe one day it will be fixed. I'm not holding my breath.
+# https://github.com/orgs/community/discussions/134570
+#    paths:
+#      - './templates/*.json'
+#      - './collate.sh'
 jobs:
   publish:
     runs-on: ubuntu-latest
