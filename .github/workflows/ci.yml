@@ -2,6 +2,9 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+    paths:
+      - './templates/**'
+      - './collate.sh'
 jobs:
   publish:
     runs-on: ubuntu-latest
