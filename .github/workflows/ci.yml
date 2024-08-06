@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - './templates/**/s*.json'
+      - './templates/**/*.json'
       - './collate.sh'
 jobs:
   publish:
