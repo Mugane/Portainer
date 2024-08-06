@@ -3,7 +3,7 @@
 # This script collates the individual .json templates in the ./templates folder into a single templates.json file
 # The output is published by GitHub Actions to GitHub Pages at https://mugane.github.io/Portainer/templates.json
 
-unlink ./templates.json 2>/dev/null # Qietly delete templates.json if it exists
+unlink ./templates.json 2>/dev/null # Quietly delete templates.json if it exists
 printf "{\n  \"version\": \"2\",\n  \"templates\": [\n" > ./templates.json
 for file in ./templates/*.json; do # Collate all the json files in ./templates separated by a comma
   sed -e 's/^/    /'  -e 's/\\n\\s*$//' "$file" >> ./templates.json # Add spaces for formatting, remove trailing space/newlines
