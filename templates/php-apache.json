@@ -20,7 +20,7 @@
       "select": [
             {
               "text": "latest",
-              "value": "latest",
+              "value": "apache",
               "default": true
             },
             {
