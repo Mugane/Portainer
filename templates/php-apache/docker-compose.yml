@@ -13,9 +13,9 @@ services:
       - ${PHP_WEB_ROOT:-./app}:/var/www/html
     command: >
       /bin/bash -c "
-      if [ -n $${PHP_EXTENSIONS+x} ]; then
+      if [ -n $${#PHP_EXTENSIONS} -gt 0 ]; then
         docker-php-ext-install $$PHP_EXTENSIONS || { 
-          echo 'Error installing PHP extensions via docker-php-ext-install - check your docker-compose.yml command: section'; 
+          echo 'Error installing PHP extensions via docker-php-ext-install $$PHP_EXTENSIONS ($PHP_EXTENSIONS) - check your docker-compose.yml command: section'; 
           exit 1; 
         }
       fi &&
@@ -23,5 +23,5 @@ services:
         echo 'ServerName $$APACHE_SERVER_NAME' >> /etc/apache2/apache2.conf;
       else
         sed -i 's/^ServerName .*/ServerName $$APACHE_SERVER_NAME/' /etc/apache2/apache2.conf;
-      fi;
+      fi &&
       apache2-foreground"
