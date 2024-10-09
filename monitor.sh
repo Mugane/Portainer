@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script to monitor templates for json file changes and rebuild the templates.json file when detected (inotify/Linux)
+# Run it once to set up monitoring. For windows, run monitor.ps1 in PowerShell (see README.md)
+
 # Install inotify-tools if not already installed
 if ! command -v inotifywait &> /dev/null; then
     if command -v yum &> /dev/null; then

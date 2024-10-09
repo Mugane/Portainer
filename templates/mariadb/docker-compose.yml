@@ -17,6 +17,7 @@ services:
       /bin/bash -c "
       if [ ! -f /docker-entrypoint-initdb.d/init.sql ]; then
         MYSQL_DATABASE_TRIMMED=\$$(echo \"${MYSQL_DATABASE}\" | tr -s ' ' | xargs); # trim & normalize spaces:
+        MYSQL_DATABASE_TRIMMED=\$$(echo \"${MYSQL_DATABASE_TRIMMED}\" | sed '/^.*,/!s/ /, /g'); # insert commas if there are none separating dbs
         IFS=' ' read -ra ADDR <<< $${MYSQL_DATABASE_TRIMMED};
         for i in \"\$${ADDR[@]}\"; do # create all databases (separated by spaces in .env - not supported by mysql 5.7):
           echo \"CREATE DATABASE IF NOT EXISTS \$${i}; GRANT ALL PRIVILEGES ON \\\`\$${i}\\\`.* TO '\$${MYSQL_USER}'@'%' WITH GRANT OPTION;\" >> /docker-entrypoint-initdb.d/init.sql; 
