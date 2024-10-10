@@ -45,7 +45,7 @@
           "name": "MYSQL_DATABASE",
           "label": "Database name(s)",
           "default": "db",
-          "description": "Space-separated list of database names to create"
+          "description": "Space/comma-separated list of database names to create"
         },
         {
           "name": "MYSQL_USER",
@@ -114,7 +114,7 @@
           "name": "MYSQL_DATABASE",
           "label": "Database name(s)",
           "default": "db",
-          "description": "Space-separated list of database names to create"
+          "description": "Space/comma-separated list of database names to create"
         },
         {
           "name": "MYSQL_USER",
