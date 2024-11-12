@@ -12,6 +12,7 @@ services:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
       - ${MOUNT_ROOT:-/var/lib/portainer}/${CONTAINER_NAME:-mariadb}/data:/var/lib/mariadb
+    networks: ${MYSQL_NETWORKS:-}
     command: >
       /bin/bash -c "
       if [ ! -f /docker-entrypoint-initdb.d/init.sql ]; then

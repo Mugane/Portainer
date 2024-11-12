@@ -57,6 +57,12 @@
       "description": "Optional parameters to the mariadbd daemon such as `--skip-grant-tables` or `--sql_mode=NO_ENGINE_SUBSTITUTION`"
     },
     {
+      "name": "MYSQL_NETWORKS",
+      "label": "Docker Networks",
+      "default": "db, mariadb, mariadb_default",
+      "description": "Networks to use for communication between containers (comma-separated)" 
+    },
+    {
       "name": "MYSQL_ROOT_HOST",
       "default": "%",
       "preset": true
