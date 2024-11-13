@@ -59,8 +59,8 @@
     {
       "name": "MYSQL_NETWORKS",
       "label": "Docker Networks",
-      "default": "db, mariadb, mariadb_default",
-      "description": "Networks to use for communication between containers (comma-separated)" 
+      "default": "mariadb",
+      "description": "Network to use for communication between containers (single name, multiple networks not supported)" 
     },
     {
       "name": "MYSQL_ROOT_HOST",
