@@ -75,10 +75,10 @@
           "description": "Optional parameters to the mariadbd daemon such as `--skip-grant-tables` or `--sql_mode=NO_ENGINE_SUBSTITUTION`"
         },
         {
-          "name": "MYSQL_NETWORK",
-          "label": "Docker Network",
-          "default": "mariadb",
-          "description": "Network to use for communication between containers (single name, multiple networks not supported)" 
+          "name": "MYSQL_NETWORKS",
+          "label": "Docker Networks",
+          "default": "db, mariadb, mariadb_default",
+          "description": "Networks to use for communication between containers (comma-separated)" 
         },
         {
           "name": "MYSQL_ROOT_HOST",
@@ -150,10 +150,10 @@
           "description": "Optional parameters to the mysqld daemon such as `--skip-grant-tables` (safe mode) or `--sql_mode=NO_ENGINE_SUBSTITUTION` (for AWS RDS permission issues)" 
         },
         {
-          "name": "MYSQL_NETWORK",
-          "label": "Docker Network",
-          "default": "mysql",
-          "description": "Network to use for communication between containers (single name, multiple networks not supported)" 
+          "name": "MYSQL_NETWORKS",
+          "label": "Docker Networks",
+          "default": "db, mysql, mysql_default",
+          "description": "Networks to use for communication between containers (comma-separated)" 
         },
         {
           "name": "MYSQL_ROOT_HOST",
