@@ -11,8 +11,7 @@ services:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
       - ${MOUNT_ROOT:-/var/lib/portainer}/${CONTAINER_NAME:-mysql}/data:/var/lib/mysql
-    networks: 
-      - ${MYSQL_NETWORK:-db}
+    networks: [ ${MYSQL_NETWORKS:-mysql} ]
     command: >
       /bin/bash -c "
       if [ ! -f /docker-entrypoint-initdb.d/init.sql ]; then
