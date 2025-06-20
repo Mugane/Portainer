@@ -24,6 +24,10 @@
               "default": true
             },
             {
+              "text": "8.4",
+              "value": "8.4-apache"
+            },
+            {
               "text": "8.3",
               "value": "8.3-apache"
             },
