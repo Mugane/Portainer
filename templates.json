@@ -75,10 +75,10 @@
           "description": "Optional parameters to the mariadbd daemon such as `--skip-grant-tables` or `--sql_mode=NO_ENGINE_SUBSTITUTION`"
         },
         {
-          "name": "MYSQL_NETWORKS",
-          "label": "Docker Networks",
-          "default": "db, mariadb, mariadb_default",
-          "description": "Networks to use for communication between containers (comma-separated)" 
+          "name": "MYSQL_NETWORK",
+          "label": "Docker Network",
+          "default": "mariadb",
+          "description": "Network to use for communication between containers (a single network only is supported)" 
         },
         {
           "name": "MYSQL_ROOT_HOST",
@@ -90,7 +90,8 @@
         "url": "https://github.com/Mugane/Portainer",
         "stackfile": "templates/mariadb/docker-compose.yml"
       }
-    },
+    }
+,
     {
       "type": 3,
       "title": "MySQL",
