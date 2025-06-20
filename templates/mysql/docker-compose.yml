@@ -11,7 +11,8 @@ services:
       - "${MYSQL_PORT:-3306}:3306"
     volumes:
       - ${MOUNT_ROOT:-/var/lib/portainer}/${CONTAINER_NAME:-mysql}/data:/var/lib/mysql
-    networks: [ ${MYSQL_NETWORKS:-mysql} ]
+    networks: 
+      - ${MYSQL_NETWORK:-mysql}
     command: >
       /bin/bash -c "
       if [ ! -f /docker-entrypoint-initdb.d/init.sql ]; then
@@ -28,3 +29,8 @@ services:
         fi;
       fi;
       exec /usr/local/bin/docker-entrypoint.sh mysqld $${MYSQLD_PARAMETERS:-}"
+
+networks:
+  db:
+    driver: bridge
+    name: ${MYSQL_NETWORK:-mysql}
