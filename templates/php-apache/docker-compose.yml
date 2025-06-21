@@ -10,7 +10,7 @@ services:
     ports:
       - "${PORT:-8081}:80"
     volumes:
-      - ${PHP_WEB_ROOT:-./app}:/var/www/html:delegated
+      - ${PHP_WEB_ROOT:-./app}:/var/www/html
     command: >
       /bin/bash -c "
       if [[ -n '$$PHP_EXTENSIONS' ]]; then
