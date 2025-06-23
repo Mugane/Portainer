@@ -102,8 +102,8 @@
     {
       "name": "PHP_EXTENSIONS",
       "label": "Additional extensions",
-      "description": "Comma-separated list of additional PHP extensions to install - without spaces! (e.g. 'pgsql,pdo_mysql,sqlite3,odbc,redis,imagick,bcmath,imap,ldap,soap,tidy,xmlrpc,zlib')",
-      "default": ""
+      "description": "SPACE-separated list of additional PHP extensions to install - no commas! (e.g. 'pgsql pdo_mysql sqlite3 odbc redis imagick bcmath imap ldap soap tidy xmlrpc zlib'). Additional extensions can be installed after startup using `docker-php-ext-install [exts]` in the container.",
+      "default": "bcmath exif gd intl mysqli zip"
     },
     {
       "name": "PHP_MEMORY_LIMIT",
@@ -130,12 +130,12 @@
       "select": [
             {
               "text": "Always restart",
-              "value": "always",
-              "default": true
+              "value": "always"
             },
             {
               "text": "Restart unless stopped",
-              "value": "unless-stopped"
+              "value": "unless-stopped",
+              "default": true
             },
             {
               "text": "Restart on failure",
