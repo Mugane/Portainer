@@ -10,5 +10,6 @@ for file in ./templates/*.json; do # Collate all the json files in ./templates s
   echo "," >> ./templates.json # Separate each joined template with a comma
 done
 sed -i '/,/{$d}' ./templates.json # Remove the last comma (and any trailing spaces)
-printf "}\n  ]\n}" >> ./templates.json # Close the json object collection
+# printf "}\n  ]\n}" >> ./templates.json # Close the json object collection
+printf "  ]\n}" >> ./templates.json # Close the json object collection
 echo "./templates/ concatenated successfully into ./templates.json"
