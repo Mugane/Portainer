@@ -16,8 +16,11 @@ services:
       alias ll='ls -al --color=auto';
       sed -i \"/Listen 80/a Listen ${PORT:-8082}\" /etc/apache2/ports.conf; # so that site scripts can access itself via http://localhost:PORT
       echo -e '\\n<VirtualHost *:*>\\n</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf; # also needed for self-access
-      if ! grep -q 'ServerName' /etc/apache2/apache2.conf; then echo \"ServerName $$APACHE_SERVER_NAME\" >> /etc/apache2/apache2.conf;
-      else sed -i \"s/^ServerName .*/ServerName $$APACHE_SERVER_NAME/\" /etc/apache2/apache2.conf; fi;
+      if ! grep -q 'ServerName' /etc/apache2/apache2.conf; then 
+        echo \"ServerName $$APACHE_SERVER_NAME\" >> /etc/apache2/apache2.conf;
+      else 
+        sed -i \"s/^ServerName .*/ServerName $$APACHE_SERVER_NAME/\" /etc/apache2/apache2.conf; 
+      fi;
       sed -i \"/unset HOME/a umask 002\" /etc/apache2/envvars; # umask required to set default permissions to 664 on new files for the apache2 process
       apt-get update && apt-get upgrade -y && apt-get install -y libjpeg-dev libpng-dev libavif-dev libwebp-dev libxpm-dev libfreetype6-dev zlib1g-dev && docker-php-ext-install gd;
       apt-get install -y libicu-dev && docker-php-ext-install intl;
