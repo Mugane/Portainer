@@ -666,6 +666,5 @@
         "stackfile": "templates/wordpress/docker-compose.yml"
       }
     }
-}
   ]
 }
