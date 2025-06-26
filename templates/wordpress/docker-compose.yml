@@ -1,0 +1,46 @@
+services:
+  web:
+    image: php:${VERSION:-latest}
+    container_name: ${CONTAINER_NAME:-WordPress}
+    restart: ${RESTART:-unless-stopped}
+    environment:
+      PHP_EXTENSIONS: ${PHP_EXTENSIONS:-}
+      PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT:-256}
+      APACHE_SERVER_NAME: ${APACHE_SERVER_NAME:-localhost}
+    ports:
+      - "${PORT:-8082}:80"
+    volumes:
+      - ${PHP_WEB_ROOT:-./app}:/var/www/html
+    command: >
+      /bin/bash -c "
+      alias ll='ls -al --color=auto';
+      sed -i \"/Listen 80/a Listen ${PORT:-8082}\" /etc/apache2/ports.conf; # so that site scripts can access itself via http://localhost:PORT
+      echo -e '\\n<VirtualHost *:*>\\n</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf; # also needed for self-access
+      if ! grep -q 'ServerName' /etc/apache2/apache2.conf; then echo \"ServerName $$APACHE_SERVER_NAME\" >> /etc/apache2/apache2.conf;
+      else sed -i \"s/^ServerName .*/ServerName $$APACHE_SERVER_NAME/\" /etc/apache2/apache2.conf; fi;
+      sed -i \"/unset HOME/a umask 002\" /etc/apache2/envvars; # umask required to set default permissions to 664 on new files for the apache2 process
+      apt-get update && apt-get upgrade -y && apt-get install -y libjpeg-dev libpng-dev libavif-dev libwebp-dev libxpm-dev libfreetype6-dev zlib1g-dev && docker-php-ext-install gd;
+      apt-get install -y libicu-dev && docker-php-ext-install intl;
+      apt install -y libzip-dev && docker-php-ext-install zip;
+      # docker-php-ext-install bcmath exif mysqli; # no missing apt dependencies for these (only kept here for reference, added via interactive input below)
+      if [[ \"$$PHP_EXTENSIONS\" =~ [a-zA-Z] ]]; then
+        docker-php-ext-install $$PHP_EXTENSIONS || { 
+          echo 'Error installing PHP extensions via docker-php-ext-install $$PHP_EXTENSIONS ($PHP_EXTENSIONS) - check your docker-compose.yml command: section'; 
+          exit 1; 
+        }
+      fi;
+      if [[ ! $(php -r 'echo PHP_VERSION;') =~ ^8.3 ]]; then # php 8.3 had a convoluted way of doing it, so if users want 8.3 they will have to install manually 
+        DEBIAN_FRONTEND=noninteractive apt install -y libmagickwand-dev --no-install-recommends --allow-unauthenticated; # --prefix=/usr
+        pecl install imagick && docker-php-ext-enable imagick;
+      fi; # Should probably add an else part that breaks if the user has provided extensions, since they won't be installed.
+      apt-get remove -y libjpeg-dev libpng-dev libavif-dev libwebp-dev libxpm-dev libfreetype6-dev zlib1g-dev libicu-dev libzip-dev;
+      apt-get clean;
+      rm -rf /var/lib/apt/lists/*;
+      # chown -R www-data:www-data /var/www/html; # old way, only the Apache user has access [remove line after tested]
+      HOST_GID=$(stat -c %g /var/www/html); # get the user id of the host user (owner of bind mount)
+      groupadd -g $HOST_GID volume-group; # create group name for host user id
+      usermod -aG volume-group www-data; # add Apache user (www-data) to group for the host user
+      find /var/www/html -exec chmod 664 {} \;; # group needs write permission to allow host user and Apache to both modify mount files
+      find /var/www/html -type d -exec chmod 775 {} \;; # group needs write permission to allow host user and Apache to both modify mount folders
+      # service apache2 restart; # have to restart to update umask (if run manually - in the command apache has not started yet) [remove line after tested]
+      apache2-foreground"
