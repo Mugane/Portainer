@@ -25,7 +25,7 @@ services:
       if [[ ! $$(echo \"<?php echo PHP_VERSION ?>\" | php) =~ ^8\\.3 ]]; then # php 8.3 had a convoluted way of doing it, so if users want 8.3 they will have to install manually 
         apt-get update && apt install -y imagemagick && apt install -y php-imagick;
         DEBIAN_FRONTEND=noninteractive apt install -y libmagickwand-dev --no-install-recommends; # --prefix=/usr
-        # pecl install imagick && 
+        pecl install imagick;
         docker-php-ext-enable imagick;
       fi; # Should probably add an else part that breaks if the user has provided extensions, since they won't be installed.
       apt-get install -y libjpeg-dev libpng-dev libavif-dev libwebp-dev libxpm-dev libfreetype6-dev zlib1g-dev && docker-php-ext-install gd;
