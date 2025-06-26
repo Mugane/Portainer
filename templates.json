@@ -615,7 +615,7 @@
         {
           "name": "PHP_EXTENSIONS",
           "label": "Additional extensions",
-          "description": "SPACE-separated list of additional PHP extensions to install - no commas! (e.g. 'pgsql pdo_mysql sqlite3 odbc redis imagick bcmath imap ldap soap tidy xmlrpc zlib'). Additional extensions can be installed after startup using `docker-php-ext-install [exts]` in the container. Note that many extensions require development libraries that may not be installed, and can break the build if absent. Extensions will not be installed if PHP 8.3 is selected above.",
+          "description": "SPACE-separated list of additional PHP extensions to install - no commas! (e.g. 'pgsql pdo_mysql sqlite3 odbc redis imap ldap soap tidy xmlrpc'). Additional extensions can be installed after startup using `docker-php-ext-install [exts]` in the container. Note that many extensions require development libraries that may not be installed, and can break the build if absent. Extensions will not be installed if PHP 8.3 is selected above.",
           "default": "bcmath exif mysqli"
         },
         {
