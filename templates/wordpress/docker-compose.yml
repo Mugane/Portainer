@@ -22,10 +22,11 @@ services:
       sed -i \"/unset HOME/a umask 002\" /etc/apache2/envvars; # umask required to set default permissions to 664 on new files for the apache2 process
       apt-get update && apt-get upgrade -y;
       # if [[ ! $$(php -r 'echo PHP_VERSION') =~ ^8\\.3 ]]; then # php 8.3 had a convoluted way of doing it, so if users want 8.3 they will have to install manually 
-      if [[ ! $$(echo \"<?php echo PHP_VERSION ?>\" | php) =~ ^8\\.3 ]]; then { # php 8.3 had a convoluted way of doing it, so if users want 8.3 they will have to install manually 
-        DEBIAN_FRONTEND=noninteractive apt install -y libmagickwand-dev --no-install-recommends --allow-unauthenticated; # --prefix=/usr
+      if [[ ! $$(echo \"<?php echo PHP_VERSION ?>\" | php) =~ ^8\\.3 ]]; then # php 8.3 had a convoluted way of doing it, so if users want 8.3 they will have to install manually 
+        apt install -y imagemagick;
+        DEBIAN_FRONTEND=noninteractive apt install -y libmagickwand-dev --no-install-recommends; # --prefix=/usr
         pecl install imagick && docker-php-ext-enable imagick;
-      } fi; # Should probably add an else part that breaks if the user has provided extensions, since they won't be installed.
+      fi; # Should probably add an else part that breaks if the user has provided extensions, since they won't be installed.
       apt-get install -y libjpeg-dev libpng-dev libavif-dev libwebp-dev libxpm-dev libfreetype6-dev zlib1g-dev && docker-php-ext-install gd;
       apt-get install -y libicu-dev && docker-php-ext-install intl;
       apt install -y libzip-dev && docker-php-ext-install zip;
