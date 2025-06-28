@@ -4,7 +4,7 @@
 
 This is a dockerized version of Portainer that can be trivially run. 
 
-Author(s) have no interest in maintaining custom docker images for anything, everything is just done in docker compose for simplicity. No registries, no hosting, just run the compose file and it builds.
+Author(s) have no interest in maintaining custom docker images for anything, everything is just done in docker compose for simplicity. No registries, no hosting, no DOCKERFILES, just run the compose file and it builds.
 
 App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
 
