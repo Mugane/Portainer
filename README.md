@@ -2,11 +2,11 @@
 
 ### Why?
 
-This is a dockerized version of Portainer that can be trivially run. 
+This is a dockerized version of Portainer with custom templates that can be trivially run. 
 
 Author(s) have no interest in maintaining custom docker images for anything, everything is just done in docker compose for simplicity. No registries, no hosting, no DOCKERFILES, just run the compose file and it builds.
 
-App templates include forms to facilitate managing deployment parameters (unlike custom app templates)
+Portainer app templates include forms to facilitate managing deployment parameters (unlike Portainer custom app templates).
 
 Reverse proxy versions of some public services are provided to facilitate domain mapping and SSL certificate management.
 
