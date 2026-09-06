@@ -24,4 +24,5 @@ services:
       else
         sed -i 's/^ServerName .*/ServerName $$APACHE_SERVER_NAME/' /etc/apache2/apache2.conf;
       fi &&
+      a2enmod rewrite &&
       apache2-foreground"
