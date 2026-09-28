@@ -1,0 +1,11 @@
+services:
+  git-http:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "${CONTAINER_NAME:-git-http}"
+    restart: "${RESTART:-unless-stopped}"
+    ports:
+      - "${PORT:-8999}:80"
+    volumes:
+      - ${REPO_ROOT:-.}:/var/www/git:ro
