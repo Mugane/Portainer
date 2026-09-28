@@ -1,6 +1,6 @@
 # Dockerized Portainer
 
-### Why?
+## Why?
 
 This is a dockerized version of Portainer with custom templates that can be trivially run. 
 
@@ -39,7 +39,7 @@ Prerequisites: You will need docker installed and either curl/wget or git.
     docker compose up -d
     ```
 
-### Portainer Stack templates
+## Portainer Stack templates
 
 This repo contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to (https://mugane.github.io/Portainer/templates.json)
 
@@ -47,7 +47,7 @@ Commits to the `main` branch automatically trigger the collate.sh script to gene
 
 While templates are being developed and customized, you might find additional useful templates using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
 
-### Modifying the templates
+## Modifying the templates
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
@@ -58,11 +58,16 @@ Edit the json and optional docker-compose.yml files under the `templates` folder
     Set-ExecutionPolicy RemoteSigned -Scope Process
     .\monitor.ps1
     ```
-    - Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings.
+    - Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings. If you can't open that in a browser, try [http://http://172.17.0.1:8080/templates.json](http://172.17.0.1:8080/templates.json) 
 
 By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
 
-### Wish list
+In order to test local `./templates/name/docker-compose.yml` and `./templates/name/Dockerfile` files, you'll need to specify a Git repository url in the `./templates/name.json` file ("repository" section). It's a bit tedious - you need a local Git HTTP SERVER to do this. The [https://mugane.github.io/Portainer/templates.json](https://mugane.github.io/Portainer/templates.json) library contains a simple single-repo server exactly for this reason. The template name is `Git HTTP Server (Alpine)`. Point it at your Portainer folder and fire it up prior to starting debugging, and it will provide the endpoint for your local template tests. You should verify that the collate.sh script is updated to use whatever your local docker IP/Port is, if you do not use the defaults below:
+
+<img width="1240" height="686" alt="image" src="https://github.com/user-attachments/assets/bec11f1c-dc7b-49c9-ae99-21fea03fd378" />
+
+
+## Wish list
 
 The following containers would be nice to have.
 
