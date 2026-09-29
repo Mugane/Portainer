@@ -2,9 +2,7 @@
 
 ## Why?
 
-This is a dockerized version of Portainer with custom templates that can be trivially run. 
-
-Author(s) have no interest in maintaining custom docker images for anything, everything is just done in docker compose for simplicity. No registries, no hosting, no DOCKERFILES, just run the compose file and it builds.
+This is a dockerized version of Portainer with custom templates that can be trivially run. There are existing open source projects that meet a similar need, but the available templates are limited or configurations are not extensive enough for my needs over the years. So this is I guess my patch kit. Be sure to check out these [Tampermonkey](https://github.com/Mugane/tampermonkey) scripts that include a [Portainer dropdown selector](https://github.com/Mugane/tampermonkey/blob/main/screenshots/portainer-template-url-history.png) and local storage memory for template URLS so you can switch easily.
 
 Portainer app templates include forms to facilitate managing deployment parameters (unlike Portainer custom app templates).
 
