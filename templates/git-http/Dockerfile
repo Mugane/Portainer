@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM docker.io/alpine:3.20
 
 RUN apk add --no-cache nginx git git-daemon fcgiwrap spawn-fcgi && \
     mkdir -p /var/run/nginx
