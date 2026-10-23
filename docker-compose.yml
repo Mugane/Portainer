@@ -28,7 +28,7 @@ services:
 
 # Roadmap:
 # ~. Ongoing: add various docker configurations 
-# 1. Cloudflare Tunnel setup for running fully qualified domain names
+# 1. Cloudflare Tunnel setup for running fully qualified domain names (dockflare)
 # 2. Cloudflare or other DNS management UI
 # 3. Backup & restore manager for container data
 # 4. CI/CD integration for live deployment
