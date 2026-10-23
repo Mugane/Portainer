@@ -16,7 +16,7 @@
     {
       "name": "VERSION",
       "label": "PHP version",
-      "description": "Version (see list of valid image versions on the Trafex Docker Hub at https://hub.docker.com/r/trafex/php-nginx/tags)",
+      "description": "Version (see list of valid image versions on the Docker Hub for PHP at https://hub.docker.com/_/php/tags)",
       "select": [
             {
               "text": "latest",
@@ -24,72 +24,20 @@
               "default": true
             },
             {
+              "text": "8.5",
+              "value": "8.5-apache"
+            },
+            {
               "text": "8.4",
-              "value": "8.4-apache"
+              "value": "8.4-apache-bookworm"
             },
             {
               "text": "8.3",
-              "value": "8.3-apache"
+              "value": "8.3-apache-bookworm"
             },
             {
               "text": "8.2",
-              "value": "8.2-apache"
-            },
-            {
-              "text": "8.1",
-              "value": "8.1-apache"
-            },
-            {
-              "text": "8.0",
-              "value": "8.0-apache"
-            },
-            {
-              "text": "7.4",
-              "value": "7.4-apache"
-            },
-            {
-              "text": "7.3",
-              "value": "7.3-apache"
-            },
-            {
-              "text": "7.2",
-              "value": "7.2-apache"
-            },
-            {
-              "text": "7.1",
-              "value": "7.1-apache"
-            },
-            {
-              "text": "7.0",
-              "value": "7.0-apache"
-            },
-            {
-              "text": "5.6",
-              "value": "5.6-apache"
-            },
-            {
-              "text": "5.5",
-              "value": "5.5-apache"
-            },
-            {
-              "text": "5.4",
-              "value": "5.4-apache"
-            },
-            {
-              "text": "5.3",
-              "value": "5.3-apache"
-            },
-            {
-              "text": "5.2",
-              "value": "5.2-apache"
-            },
-            {
-              "text": "5.1",
-              "value": "5.1-apache"
-            },
-            {
-              "text": "5.0",
-              "value": "5.0-apache"
+              "value": "8.2-apache-bookworm"
             }
       ] 
     },
@@ -120,7 +68,7 @@
     {
       "name": "PHP_WEB_ROOT",
       "label": "Mount root",
-      "default": "~/Docker/Websites/",
+      "default": "/Docker/Websites/",
       "default-windows": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
       "description": "Path on host to use for the PHP application root. For Windows, enclose in quotes and escape path separators with double-backslashes."
     },
