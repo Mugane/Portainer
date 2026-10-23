@@ -54,7 +54,11 @@ Edit the json and optional docker-compose.yml files under the `templates` folder
     Set-ExecutionPolicy RemoteSigned -Scope Process
     .\monitor.ps1
     ```
-    - Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings. If you can't open that in a browser, try [http://http://172.17.0.1:8080/templates.json](http://172.17.0.1:8080/templates.json) 
+On linux, you can run 
+    ```
+    sudo docker run --name templates-json --rm -d -p 8080:80 -v "${PWD}/templates.json:/usr/share/nginx/html/templates.json:ro" nginx:alpine
+    ```
+Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings. If you can't open that in a browser, try [http://http://172.17.0.1:8080/templates.json](http://172.17.0.1:8080/templates.json) 
 
 By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
 
@@ -62,11 +66,72 @@ In order to test local `./templates/name/docker-compose.yml` and `./templates/na
 
 <img width="1240" height="686" alt="image" src="https://github.com/user-attachments/assets/bec11f1c-dc7b-49c9-ae99-21fea03fd378" />
 
+In order for changes to be picked up, you will need to commit them (the git server will pull from the advertised refs rather than the working tree). 
+    - Use `git commit -am "some test stage message"` (or use `git add [files] && git commit -a "some message"` for specific commits)
+    - Once you're satisfied with the tests, roll back the commits and consolidate the changes into one with 
+    - `git reset --soft $(git merge-base HEAD origin/main)` (to prevent cutting changes from a [stale main](https://github.com/Team-Commonly/commonly/issues/516))
+    - `git commit -m "complete change summary"`
+    - `git pull`
+    - `git push` 
+
+You will also need to restart the templates-json docker container after each run of .collate.sh so use `./collate.sh --local && sudo docker restart templates-json`
 
 ## Wish list
 
 The following containers would be nice to have.
 
-From Lissy: Caddy, CrateDB, Drupal, Elasticsearch, Ghost, Httpd, Jenkins, Ironfunctions, Joomla, Magento, Minio, Mongo, Plone, PostgreSQL, Redis, Registry, Scality S3, Solr, Urbackup, Blender, Boinc, Gitqlient, Ubuntu, OPC router, softing edgeConnector containers Apache Httpd, influxdb, freescout, wger, [dockge](https://www.youtube.com/watch?v=HEklvsr7q54), [Activepieces](https://www.youtube.com/watch?v=MRm75uTf_A4), [Plane PM](https://www.youtube.com/watch?v=HqKvfDZICBA), [Flowise AI](https://www.youtube.com/watch?v=03RBE72lNf8), [Ory Kratos](https://www.youtube.com/watch?v=T-UPdN1hxKA), umami.is, mamoto,
+<!--
 
-Other: Geany, Home Assistant, Jellyfin, Open-Webui, Ollama, Bolt.diy, WireGuard
+Lower priority: From Lissy: Caddy, CrateDB, Drupal, Elasticsearch, Ghost, Httpd, Jenkins, Ironfunctions, Joomla, Magento, Minio, Mongo, Plone, PostgreSQL, Redis, Registry, Scality S3, Solr, Urbackup, Blender, Boinc, Gitqlient, Ubuntu, OPC router, softing edgeConnector containers Apache Httpd, influxdb, freescout, wger, [dockge](https://www.youtube.com/watch?v=HEklvsr7q54), [Activepieces](https://www.youtube.com/watch?v=MRm75uTf_A4), [Plane PM](https://www.youtube.com/watch?v=HqKvfDZICBA), [Flowise AI](https://www.youtube.com/watch?v=03RBE72lNf8), [Ory Kratos](https://www.youtube.com/watch?v=T-UPdN1hxKA), umami.is, mamoto,
+
+Other: Geany, Home Assistant, Jellyfin, , WireGuard, Domoticz, openHAB
+-->
+
+SEO:
+- [https://github.com/every-app/open-seo] Open SEO
+
+Productivity:
+- [https://github.com/storytold] Adobe clones (remove top bar and make PWA)
+
+DevOps:
+- [https://github.com/cypress-io/cypress](Cypress)
+- [https://forgejo.org/releases/](Forgejo) Exclusively free fork of for-profit Gitea
+- Dokku
+- OPC Router
+- Grafana + Prometheus + Loki + Tempo
+- Terraform/Ansible
+- [https://github.com/ChrispyBacon-dev/DockFlare](Dockflare) Automate Cloudflare Tunnels with Docker Labels
+- [https://github.com/terramate-io/terramate](Terramate) Use terraform hcl with other IaC platforms - see https://spacelift.io/blog/terraform-alternatives and https://www.qovery.com/blog/infrastructure-automation-tools-comparison
+Pulumi
+
+AI: 
+- [https://github.com/LangConfig/langconfig](LangConfig) LangChain/LangGraph orchestrator/workflow builder [https://docs.litellm.ai/docs/proxy/docker_quick_start](docs)
+- [https://github.com/BerriAI/litellm](LiteLLM) LLM proxy API router (see https://portainer-templates.as93.net/litellm)
+- [https://github.com/diegosouzapw/OmniRoute](OmniRoute) AI Gateway
+- [https://github.com/Panniantong/Agent-Reach](Agent Reach)
+- [https://github.com/n8n-io/n8n/tree/master](n8n) Visual building/custom code (LangChain), integrations
+- [https://github.com/open-free-llm-api/awesome-freellm-apis](Free LLM APIs)
+- [https://github.com/Kaliiiiiiiiii-Vinyzu/patchright](Patchright) from [https://playwright.dev/](Playwright)
+- [https://github.com/unslothai/unsloth] Unsloth (model fine tuning/training)
+- [https://github.com/p-e-w/heretic] Heretic (abliteration) - see https://github.com/dreamfast/heretic-docker/ as an example
+- [https://github.com/anomalyco/opencode](Open Code) The open source AI coding agent
+- [https://github.com/open-webui/open-webui](Open-Webui)
+- [https://github.com/stackblitz-labs/bolt.diy](Bolt.diy) Prompt, run, edit, and deploy full-stack web apps [https://stackblitz-labs.github.io/bolt.diy/](docs)
+- [https://github.com/ollama/ollama](Ollama)
+- Hugging face setup (run hugging face models like https://huggingface.co/fastino/GLiNER2.5-Decide)
+- [https://github.com/tashfeenahmed/freellmapi](Free LLM API) 7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.
+- [https://github.com/alishahryar1/free-claude-code](Free Claude Code) Use Claude Code, Codex, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)
+<!--
+    - [https://web.facebook.com/reel/1578382909964624](web design) Add setup for building websites (make open source version)
+>
+<!--
+Models/implementatnois:
+- Laya *open jev https://www.youtube.com/shorts/nVNQUzpw3Nw
+- Whisper (audio/translate) https://www.youtube.com/watch?v=bavO_V80ohM
+- https://ollama.com/library/qwen3.8:27b
+
+OSINT:
+- []()
+- []()
+
+-->
