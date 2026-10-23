@@ -7,7 +7,7 @@
 #    Set-ExecutionPolicy RemoteSigned -Scope Process
 #    .\monitor.ps1
 
-$global:ContainerName = 'portemp' # The Docker container name (where the repo is mounted for building)
+$global:ContainerName = $args[0] ?? 'templates-json' # The Docker container name (where the repo is mounted for building)
 $global:CollatePath = '/usr/share/nginx/html' # The collate script path inside the container
 
 $watcher = New-Object System.IO.FileSystemWatcher -Property @{
