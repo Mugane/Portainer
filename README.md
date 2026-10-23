@@ -110,22 +110,38 @@ OSINT:
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
-Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates. On windows you can set up a watch by running the `monitor.ps1` script in PowerShell:
-- Open PowerShell as Administrator, navigate to the Portainer repo folder and run:
-  ```
-  docker run -d -v ${PWD}:/usr/share/nginx/html -p 8080:80 --name portemp nginx:latest
-  Set-ExecutionPolicy RemoteSigned -Scope Process
-  .\monitor.ps1
-  ```
-To serve the template.json file locally, run:
-```
-sudo docker run --name templates-json --rm -d -p 8080:80 -v "${PWD}/templates.json:/usr/share/nginx/html/templates.json:ro" nginx:alpine
-```
+Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates, run the git http server, and commit your changes locally before testing (See steps 1 and 2 below). 
+    
 Use [http://localhost:8080/templates.json](http://localhost:8080/templates.json) for the templates url in your local Portainer settings. If you can't open that in a browser, try [http://http://172.17.0.1:8080/templates.json](http://172.17.0.1:8080/templates.json) 
 
 By convention the `./templates/name.json` file and the optional `./templates/name/docker-compose.yml` folder use the same `name` for clarity. It is dash-separated, lowercase and describes the primary nature of the template contents. 
 
-In order to test local `./templates/name/docker-compose.yml` and `./templates/name/Dockerfile` files, you'll need to specify a Git repository url in the `./templates/name.json` file ("repository" section). It's a bit tedious - you need a local Git HTTP SERVER to do this. This [templates.json](https://mugane.github.io/Portainer/templates.json) library contains a simple single-repo server exactly for this reason. The template name is `Git HTTP Server (Alpine)`. Point it at your Portainer folder and fire it up prior to starting debugging, and it will provide the endpoint for your local template tests. You should verify that the collate.sh script is updated to use whatever your local docker IP/Port is, if you do not use the defaults below:
+### STEP 1/2: templates.json
+- **Automatic (Windows)**: you can set up a watch by running the `monitor.ps1` script in PowerShell. Open PowerShell as Administrator, navigate to the Portainer repo folder and run:
+  ```
+  docker run -d -v ${PWD}:/usr/share/nginx/html -p 8080:80 --name templates-json nginx:latest
+  Set-ExecutionPolicy RemoteSigned -Scope Process
+  .\monitor.ps1 templates-json
+  ```
+- **Automatic (Linux)**: you can set up monitoring (and the docker container templates-json that serves the collated local file), by running:
+  ```
+  sudo ./monitor.sh # if your docker install requires sudo, or:
+  . monitor.sh # if your docker install does not require sudo
+  ```
+- **Manual**:
+  - To serve the template.json file locally, run:
+    ```
+    sudo docker run --name templates-json --rm -d -p 8080:80 \
+        -v "${PWD}/templates.json:/usr/share/nginx/html/templates.json:ro" nginx:alpine
+    ```
+  - You will also need to restart the templates-json docker container after each run of .collate.sh - so to do the collation, run:
+    ```
+    ./collate.sh --local && sudo docker restart templates-json
+    ```
+    
+### Step 2/2: Git server
+
+In order to test local `./templates/name/docker-compose.yml` and `./templates/name/Dockerfile` files, you'll need to specify a Git repository url in the `./templates/name.json` file ("repository" section). You need a local Git HTTP SERVER to do this. This [templates.json](https://mugane.github.io/Portainer/templates.json) library contains a simple single-repo server exactly for this reason. The template name is `Git HTTP Server (Alpine)`. Point it at your Portainer folder and fire it up prior to starting debugging, and it will provide the endpoint for your local template tests. You should verify that the collate.sh script is updated to use whatever your local docker IP/Port is, if you do not use the defaults below:
 
 <img width="1240" height="686" alt="image" src="https://github.com/user-attachments/assets/bec11f1c-dc7b-49c9-ae99-21fea03fd378" />
 
@@ -144,7 +160,4 @@ In order for changes to be picked up, you will need to commit them (the git serv
   git pull
   git push 
   ```
-- You will also need to restart the templates-json docker container after each run of .collate.sh so to do the collation, run:
-  ```
-  ./collate.sh --local && sudo docker restart templates-json
-  ```
+
