@@ -159,7 +159,20 @@ In order for changes to be picked up, you will need to commit them (the git serv
   ```
   git reset --soft $(git merge-base HEAD origin/main)
   git commit -m "complete change summary"
-  git pull
-  git push 
+  git pull --ff-only # Check whether origin/main has changed
   ```
 
+  If this succeeds, there is no divergence and the local branch can be pushed directly:
+  ```
+  git push
+  ```
+
+  If it fails with:
+  ```
+  fatal: Not possible to fast-forward, aborting.
+  ```
+  the local branch and `origin/main` have diverged. Rebase the consolidated local commit onto the remote changes:
+  ```
+  git rebase origin/main
+  git push
+  ```
