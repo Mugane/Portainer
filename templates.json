@@ -321,6 +321,72 @@
     },
     {
       "type": 3,
+      "name": "orca",
+      "title": "Orca Web UI",
+      "description": "Headless Orca server (AI agent orchestrator) with its web UI.",
+      "categories": ["AI", "Development"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/127256420?s=60&v=4",
+      "notes": "Builds Orca from the official Linux AppImage and runs its headless web server.",
+      "env": [
+        {
+          "name": "CONTAINER_NAME",
+          "label": "Container name",
+          "default": "orca",
+          "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
+        },
+        {
+          "name": "ORCA_VERSION",
+          "label": "Orca version",
+          "description": "Orca release version to install (e.g 'v1.4.237').",
+          "default": "latest"
+        },
+        {
+          "name": "UBUNTU_VERSION",
+          "label": "Ubuntu version",
+          "description": "Ubuntu base image version. Orca's headless Linux documentation lists Ubuntu 20.04, 22.04, and 24.04. Ubuntu 24.04 is the newest documented version as of 10/24/2026; Ubuntu 26.04 is not officially listed yet.",
+          "select": [
+            {
+              "text": "26.04 LTS (recommended)",
+              "value": "26.04"
+            },
+            {
+              "text": "24.04 LTS (recommended)",
+              "value": "24.04",
+              "default": true
+            },
+            {
+              "text": "22.04 LTS",
+              "value": "22.04"
+            }
+          ]
+        },
+        {
+          "name": "ORCA_PORT",
+          "label": "Web UI port",
+          "description": "Host port for the Orca web UI.",
+          "default": "6768"
+        },
+        {
+          "name": "ORCA_DATA",
+          "label": "Orca data volume",
+          "description": "Host path or Docker volume mounted at /home/orca",
+          "default": "/AI/orca/home"
+        },
+        {
+          "name": "LOCAL_AI_NETWORK",
+          "label": "Network (optional)",
+          "description": "Name of an existing Docker network providing local services (e.g. inference). Leave blank to use Docker's built-in bridge network.",
+          "default": ""
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/Mugane/Portainer",
+        "stackfile": "templates/orca/docker-compose.yml"
+      }
+    },
+    {
+      "type": 3,
       "title": "PHP/Apache (Debian)",
       "description": "The official PHP/Apache image on Debian Linux (php:latest) with selectable version and other options",
       "categories": [ "Servers", "Development" ],
