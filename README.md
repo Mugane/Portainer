@@ -106,7 +106,7 @@ OSINT:
 
 -->
 
-## Modifying the templates
+## Contributing (Modifying the templates)
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
