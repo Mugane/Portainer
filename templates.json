@@ -376,7 +376,7 @@
         {
           "name": "LOCAL_AI_NETWORK",
           "label": "Network (optional)",
-          "description": "Name of an existing Docker network providing local services (e.g. inference). Leave blank to use Docker's built-in bridge network.",
+          "description": "Name of an existing Docker network providing local services (e.g. inference). Leave blank to use Docker's built-in bridge network. Orca always creates the 'orca' network.",
           "default": ""
         }
       ],
