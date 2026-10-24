@@ -149,8 +149,8 @@ In order for changes to be picked up, you will need to commit them (the git serv
 
 - To commit the changes locally:
   ```
-  git commit -am "some test stage message" # all changes, or:
-  git add [files] && git commit -a "some message"` # for specific commits
+  git add -A && git commit -m "some message" # all changes, including new files, or:
+  git add [files] && git commit -m "some message" # for specific commits
   ```
 - Once you're satisfied with the tests, roll back the commits and consolidate the changes into one with this sequence. `merge-base` prevents cutting changes from a [stale main branch](https://github.com/Team-Commonly/commonly/issues/516)
     
