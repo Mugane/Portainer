@@ -1,0 +1,85 @@
+services:
+  orca:
+    container_name: ${CONTAINER_NAME:-orca}
+    image: ${CONTAINER_NAME:-orca}
+    pull_policy: build
+    build:
+      args:
+        ORCA_VERSION: ${ORCA_VERSION:-latest}
+        UBUNTU_VERSION: ${UBUNTU_VERSION:-24.04}
+      dockerfile_inline: |
+        ARG UBUNTU_VERSION=24.04
+        FROM ubuntu:$${UBUNTU_VERSION} AS dependencies
+        ARG UBUNTU_VERSION
+        ARG ORCA_VERSION=latest
+        ARG TARGETARCH
+        ENV DEBIAN_FRONTEND=noninteractive
+        RUN apt-get update && \
+            if [ "$$UBUNTU_VERSION" = "22.04" ]; then \
+              libs="libgtk-3-0 libatk1.0-0 libatk-bridge2.0-0 libasound2 libcups2 libatspi2.0-0"; \
+            else \
+              libs="libgtk-3-0t64 libatk1.0-0t64 libatk-bridge2.0-0t64 libasound2t64 libcups2t64 libatspi2.0-0t64"; \
+            fi && \
+            apt-get install -y --no-install-recommends \
+              bash ca-certificates curl file git jq openssh-client procps \
+              xvfb zlib1g-dev libnss3 libgbm1 libdrm2 libxkbcommon0 \
+              libpango-1.0-0 libcairo2 libxtst6 libxcomposite1 libxdamage1 \
+              libxfixes3 libxrandr2 libxrender1 libx11-xcb1 libxcb-dri3-0 \
+              libxss1 $$libs \
+            && rm -rf /var/lib/apt/lists/*
+
+        FROM dependencies AS orca-build
+        RUN case "$$TARGETARCH" in \
+              amd64) asset=orca-linux.AppImage ;; \
+              arm64) asset=orca-linux-arm64.AppImage ;; \
+              *) echo "Unsupported architecture: $$TARGETARCH" >&2; exit 1 ;; \
+            esac \
+            && if [ "$$ORCA_VERSION" = "latest" ]; then \
+                 url="https://github.com/stablyai/orca/releases/latest/download/$$asset"; \
+               else \
+                 url="https://github.com/stablyai/orca/releases/download/$$ORCA_VERSION/$$asset"; \
+               fi \
+            && curl -fL --retry 3 -o /tmp/orca.AppImage "$$url" \
+            && chmod +x /tmp/orca.AppImage \
+            && cd /opt \
+            && /tmp/orca.AppImage --appimage-extract >/dev/null \
+            && mv /opt/squashfs-root /opt/orca \
+            && chmod -R a+rX /opt/orca \
+            && rm /tmp/orca.AppImage
+
+        FROM dependencies AS runtime
+        COPY --from=orca-build /opt/orca /opt/orca
+        RUN useradd --create-home --shell /bin/bash orca
+        RUN cat > /usr/local/bin/orca-entrypoint <<'EOF'
+        #!/bin/sh
+        set -eu
+        mkdir -p /home/orca/.config /home/orca/.cache/fontconfig /home/orca/.fontconfig
+        chown orca:orca /home/orca
+        chown -R orca:orca /home/orca/.config /home/orca/.cache /home/orca/.fontconfig
+        exec runuser -u orca -- /opt/orca/AppRun "$$@"
+        EOF
+        RUN chmod 755 /usr/local/bin/orca-entrypoint
+        USER root
+        WORKDIR /home/orca
+        ENV PATH=/home/orca/.local/bin:/opt/orca/resources/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LIBGL_ALWAYS_SOFTWARE=1
+        ENTRYPOINT ["/usr/local/bin/orca-entrypoint"]
+    restart: unless-stopped
+    init: true
+    # shm_size: "1gb"
+    command: ["serve", "--port", "${ORCA_PORT:-6768}"]
+    ports:
+      - "${ORCA_PORT:-6768}:${ORCA_PORT:-6768}"
+    volumes:
+      - "${ORCA_DATA:-/AI/orca/home}:/home/orca"
+    healthcheck:
+      test: ["CMD", "bash", "-c", ": > /dev/tcp/127.0.0.1/${ORCA_PORT:-6768}"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+networks:
+  local_ai:
+    name: "${LOCAL_AI_NETWORK:-bridge}"
+    external: true
+  orca:
+    name: orca
