@@ -1,5 +1,6 @@
 {
   "type": 3,
+  "name": "wordpress",
   "title": "WordPress Only (Apache)",
   "description": "The official PHP/Apache image on Ubnutu (php:latest) with selectable version and other options",
   "categories": [ "CMS", "Servers", "Development" ],
@@ -10,7 +11,7 @@
     {
       "name": "CONTAINER_NAME",
       "label": "Container name",
-      "default": "WordPress",
+      "default": "wordpress",
       "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
     },
     {

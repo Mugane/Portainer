@@ -1,5 +1,6 @@
 {
   "type": 3,
+  "name": "git-http",
   "title": "Git HTTP Server (Alpine)",
   "description": "A lightweight Git-over-http server that allows git requests to a specified local repository folder.",
   "categories": [ "Servers", "Development" ],

@@ -1,5 +1,6 @@
 {
   "type": 3,
+  "name": "mariadb",
   "title": "MariaDB",
   "description": "MariaDB v10.6+ Container with default settings",
   "categories": ["Database"],

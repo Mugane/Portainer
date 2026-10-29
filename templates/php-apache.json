@@ -1,5 +1,6 @@
 {
   "type": 3,
+  "name": "php-apache",
   "title": "PHP/Apache (Debian)",
   "description": "The official PHP/Apache image on Debian Linux (php:latest) with selectable version and other options",
   "categories": [ "Servers", "Development" ],
