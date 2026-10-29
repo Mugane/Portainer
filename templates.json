@@ -18,6 +18,7 @@
     },
     {
       "type": 3,
+      "name": "git-http",
       "title": "Git HTTP Server (Alpine)",
       "description": "A lightweight Git-over-http server that allows git requests to a specified local repository folder.",
       "categories": [ "Servers", "Development" ],
@@ -76,6 +77,7 @@
 ,
     {
       "type": 3,
+      "name": "mariadb",
       "title": "MariaDB",
       "description": "MariaDB v10.6+ Container with default settings",
       "categories": ["Database"],
@@ -152,6 +154,7 @@
 ,
     {
       "type": 3,
+      "name": "mysql",
       "title": "MySQL",
       "description": "MySQL <= 9.0 Container with default settings",
       "categories": ["Database"],
@@ -347,7 +350,7 @@
           "description": "Ubuntu base image version. Orca's headless Linux documentation lists Ubuntu 20.04, 22.04, and 24.04. Ubuntu 24.04 is the newest documented version as of 10/24/2026; Ubuntu 26.04 is not officially listed yet.",
           "select": [
             {
-              "text": "26.04 LTS (recommended)",
+              "text": "26.04 LTS (untested as of 10/26)",
               "value": "26.04"
             },
             {
@@ -387,6 +390,7 @@
     },
     {
       "type": 3,
+      "name": "php-apache",
       "title": "PHP/Apache (Debian)",
       "description": "The official PHP/Apache image on Debian Linux (php:latest) with selectable version and other options",
       "categories": [ "Servers", "Development" ],
@@ -527,6 +531,7 @@
     },
     {
       "type": 3,
+      "name": "traefik-hello",
       "title": "Traefik: NGINX Hello World",
       "description": "Reverse-proxied NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver. Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
       "categories": [ "Servers", "Production", "Traefik", "SSL" ],
@@ -537,7 +542,7 @@
         {
           "name": "CONTAINER_NAME",
           "label": "Container name",
-          "default": "nginx-php",
+          "default": "traefik-hello",
           "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
         },
         {
@@ -555,6 +560,7 @@
 ,
     {
       "type": 3,
+      "name": "traefik",
       "title": "Traefik: NGINX & PHP (Alpine)",
       "description": "Reverse-proxied PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux (trafex/php-nginx). Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
       "categories": [ "Servers", "Production", "Traefik", "HTTPS" ],
@@ -565,7 +571,7 @@
         {
           "name": "CONTAINER_NAME",
           "label": "Container name",
-          "default": "nginx-php",
+          "default": "traefik",
           "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
         },
         {
@@ -621,6 +627,7 @@
     },
     {
       "type": 3,
+      "name": "wordpress",
       "title": "WordPress Only (Apache)",
       "description": "The official PHP/Apache image on Ubnutu (php:latest) with selectable version and other options",
       "categories": [ "CMS", "Servers", "Development" ],
@@ -631,7 +638,7 @@
         {
           "name": "CONTAINER_NAME",
           "label": "Container name",
-          "default": "WordPress",
+          "default": "wordpress",
           "description": "Container name (for docker, unlike 'Name' above which is only used by Portainer to manage displayed stacks)"
         },
         {
