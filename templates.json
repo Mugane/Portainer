@@ -492,6 +492,41 @@
 ,
     {
       "type": 3,
+      "name": "phpmyadmin",
+      "title": "phpMyAdmin",
+      "description": "Web interface for administering MySQL and MariaDB databases.",
+      "categories": ["Database", "Development"],
+      "platform": "linux", 
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/9/95/PhpMyAdmin_logo.png",
+      "notes": "This installation allows access to any database hosts.",
+      "network": "bridge",
+      "env": [
+        {
+          "name": "CONTAINER_NAME",
+          "label": "Container name",
+          "default": "phpmyadmin",
+          "description": "Container name, separate from the Portainer stack name."
+        },
+        {
+          "name": "PHPMYADMIN_PORT",
+          "label": "Host port",
+          "default": "3380",
+          "description": "Host port mapped to phpMyAdmin's HTTP port 80."
+        },
+        {
+          "name": "DATABASE_NETWORK",
+          "label": "Network (optional)",
+          "description": "Name of an existing network shared with your database container. Leave blank to use the built-in bridge network.",
+          "default": ""
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/Mugane/Portainer",
+        "stackfile": "templates/phpmyadmin/docker-compose.yml"
+      }
+    },
+    {
+      "type": 3,
       "title": "Traefik: NGINX Hello World",
       "description": "Reverse-proxied NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver. Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
       "categories": [ "Servers", "Production", "Traefik", "SSL" ],
