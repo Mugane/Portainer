@@ -48,6 +48,12 @@ While templates are being developed and customized, you might find additional us
 
 ## Wish list
 
+### Features:
+
+- Need to update the collation script to modify a README.md for the templates that compiles descriptions and links to each README.md and other resources (images, home pages, etc). But, this needs to be in Git. So not part of Github actions, but part of the collate.sh script.
+
+### Services to add:
+
 The following containers would be nice to have.
 
 <!--
