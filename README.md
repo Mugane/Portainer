@@ -39,8 +39,6 @@ Prerequisites: You will need docker installed and either curl/wget or git.
 
 This repo contains custom portainer templates, you can install them after running Portainer by switching the App Templates URL (under [Settings](http://localhost:9000/#!/settings)) to (https://mugane.github.io/Portainer/templates.json)
 
-Commits to the `main` branch automatically trigger the collate.sh script to generate and publish the final `templates.json` file to [GitHub Pages](https://mugane.github.io/Portainer/templates.json). `templates.json` is not present in the `main` branch to avoid confusion when making source updates.
-
 <!--
 While templates are being developed and customized, you might find additional useful templates using this URL for the templates target: `https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json`
 -->
@@ -83,7 +81,6 @@ DevOps:
 AI: 
 - [LangConfig](https://github.com/LangConfig/langconfig) - LangChain/LangGraph orchestrator/workflow builder [docs](https://docs.litellm.ai/docs/proxy/docker_quick_start)
 - [LiteLLM](https://github.com/BerriAI/litellm) - LLM proxy API router (see https://portainer-templates.as93.net/litellm)
-- [OmniRoute](https://github.com/diegosouzapw/OmniRoute) - AI Gateway
 - [Agent Reach](https://github.com/Panniantong/Agent-Reach)
 - [n8n](https://github.com/n8n-io/n8n/tree/master) - Visual building/custom code (LangChain), integrations
 - [Free LLM APIs](https://github.com/open-free-llm-api/awesome-freellm-apis)
@@ -115,6 +112,8 @@ OSINT:
 ## Contributing (Modifying the templates)
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
+
+Commits to the `main` branch on GitHub automatically trigger the collate.sh script to generate and publish the final `templates.json` file to [GitHub Pages](https://mugane.github.io/Portainer/templates.json). `templates.json` is not present in the `main` branch to avoid confusion when making source updates.
 
 Edit the json and optional docker-compose.yml files under the `templates` folder. To test locally, run the `collate.sh` script to regenerate the template.json file with the full list of templates, run the git http server, and commit your changes locally before testing (See steps 1 and 2 below). 
     
@@ -157,7 +156,6 @@ In order for changes to be picked up, you will need to commit them (the git serv
   ```
   git add -A && git commit -m "some message" # all changes, including new files, or:
   git add [files] && git commit -m "some message" # for specific new files && changes, or:
-  git commit -m "some message" [files] # for changes to specific files only (no new files), or:
   git commit -am "some message" # for all changes only (no new files)
   ```
 - Once you're satisfied with the tests, roll back the commits and consolidate the changes into one with this sequence. `merge-base` prevents cutting changes from a [stale main branch](https://github.com/Team-Commonly/commonly/issues/516)

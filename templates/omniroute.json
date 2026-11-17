@@ -1,0 +1,52 @@
+{
+  "type": 3,
+  "name": "omniroute",
+  "title": "OmniRoute",
+  "description": "Self-hosted AI gateway with a unified OpenAI-compatible endpoint, MCP/A2A support, fallback, and Redis-backed caching. Includes the official Redis sidecar.",
+  "categories": ["AI", "Proxy"],
+  "platform": "linux",
+  "logo": "https://raw.githubusercontent.com/cheaper-inference/OmniRoute/release/v3.8.54/public/icon-192.svg",
+  "notes": "Dashboard and /v1 proxy on port 20128. All ports bind to loopback. Redis is internal and not published to the host. Application settings (API keys, auth, providers) are configured in the dashboard after first boot.",
+  "env": [
+    {
+      "name": "CONTAINER_NAME",
+      "label": "Container name",
+      "default": "omniroute",
+      "description": "Docker container name."
+    },
+    {
+      "name": "OMNIROUTE_VERSION",
+      "label": "OmniRoute image tag",
+      "description": "Full image tag from Docker Hub (e.g. latest, latest-web, latest-bun, latest-web-bun, or a pinned version).",
+      "default": "latest-web-bun"
+    },
+    {
+      "name": "DASHBOARD_PORT",
+      "label": "Dashboard port",
+      "description": "Host port for the dashboard and /v1 proxy.",
+      "default": "20128"
+    },
+    {
+      "name": "API_PORT",
+      "label": "API port",
+      "description": "Host port for the dedicated API listener.",
+      "default": "20129"
+    },
+    {
+      "name": "LIVE_WS_PORT",
+      "label": "Live WebSocket port",
+      "description": "Host port for the live WebSocket service.",
+      "default": "20132"
+    },
+    {
+      "name": "OMNIROUTE_DATA",
+      "label": "Host data directory",
+      "description": "Host path mounted at /app/data.",
+      "default": "/AI/omniroute/data"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/Mugane/Portainer",
+    "stackfile": "templates/omniroute/docker-compose.yml"
+  }
+}
