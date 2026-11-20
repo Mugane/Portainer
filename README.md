@@ -1,4 +1,4 @@
-# Dockerized Portainer
+# Portainer Templates for AI & DevOps
 
 This is a dockerized version of Portainer with custom templates that can be trivially run. There are existing open source projects that meet a similar need, but the available templates are limited or configurations are not extensive enough for my needs over the years. So this is my patch kit. Be sure to check out these [Tampermonkey](https://github.com/Mugane/Tampermonkey) scripts that include a [Portainer dropdown selector](https://github.com/Mugane/Tampermonkey/blob/main/screenshots/portainer-template-url-history.png) and local storage memory for template URLS so you can switch easily.
 
