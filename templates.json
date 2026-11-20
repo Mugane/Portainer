@@ -77,6 +77,80 @@
 ,
     {
       "type": 3,
+      "name": "localai",
+      "title": "LocalAI",
+      "description": "Open-source AI engine with integrated web UI and OpenAI-compatible API. Supports LLMs, vision, audio, image and video generation.",
+      "categories": ["AI"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/mudler/LocalAI/master/core/http/static/logo.png",
+      "env": [
+        {
+          "name": "CONTAINER_NAME",
+          "label": "Container name",
+          "default": "localai",
+          "description": "Docker container name."
+        },
+        {
+          "name": "LOCALAI_IMAGE_VERSION",
+          "label": "LocalAI image version",
+          "default": "latest",
+          "description": "Select the LocalAI image variant. Description: https://localai.io/docs/start/install/containers/#image-types",
+          "select": [
+            {
+              "text": "Latest - CPU",
+              "value": "latest",
+              "default": true
+            },
+            {
+              "text": "Latest - NVIDIA CUDA 12",
+              "value": "latest-gpu-nvidia-cuda-12"
+            },
+            {
+              "text": "Latest - NVIDIA CUDA 13",
+              "value": "latest-gpu-nvidia-cuda-13"
+            },
+            {
+              "text": "Latest - Intel GPU",
+              "value": "latest-gpu-intel"
+            },
+            {
+              "text": "Latest - AMD ROCm",
+              "value": "latest-gpu-hipblas"
+            },
+            {
+              "text": "Latest - Vulkan",
+              "value": "latest-gpu-vulkan"
+            },
+            {
+              "text": "Latest - NVIDIA Jetson CUDA 12",
+              "value": "latest-nvidia-l4t-arm64"
+            },
+            {
+              "text": "Latest - NVIDIA Jetson CUDA 13",
+              "value": "latest-nvidia-l4t-arm64-cuda-13"
+            }
+          ]
+        },
+        {
+          "name": "LOCALAI_PORT",
+          "label": "UI/API port",
+          "default": "11180",
+          "description": "Host port."
+        },
+        {
+          "name": "LOCALAI_STORAGE",
+          "label": "Local storage directory",
+          "default": "",
+          "description": "Root directory for all LocalAI persistent storage. Subdirectories are created automatically."
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/Mugane/Portainer",
+        "stackfile": "templates/localai/docker-compose.yml"
+      }
+    },
+    {
+      "type": 3,
       "name": "mariadb",
       "title": "MariaDB",
       "description": "MariaDB v10.6+ Container with default settings",
