@@ -1,6 +1,6 @@
 # Development Guide
 
-##  How to Modifying the Templates
+##  How to Modify the Templates
 
 See [Portainer Documentation](https://docs.portainer.io/advanced/app-templates/format) for format descriptions.
 
@@ -121,6 +121,7 @@ AI:
 - [Open-Webui](https://github.com/open-webui/open-webui)
 - [Bolt.diy](https://github.com/stackblitz-labs/bolt.diy) Prompt, run, edit, and deploy full-stack web apps ([docs](https://stackblitz-labs.github.io/bolt.diy/))
 - [Ollama](https://github.com/ollama/ollama)
+- [Dr. Zero](https://github.com/facebookresearch/drzero) Self-evolving search agents without training data (from Facebook Research)
 - Hugging face setup (run hugging face models like https://huggingface.co/fastino/GLiNER2.5-Decide)
 - [Free LLM API](https://github.com/tashfeenahmed/freellmapi) 7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.
 - [Free Claude Code](https://github.com/alishahryar1/free-claude-code) Use Claude Code, Codex, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)
