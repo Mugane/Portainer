@@ -1,0 +1,107 @@
+services:
+  latest:
+    image: docker.io/localai/localai:latest
+    profiles: ["never"]
+
+  latest-gpu-nvidia-cuda-12:
+    image: docker.io/localai/localai:latest-gpu-nvidia-cuda-12
+    profiles: ["never"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  latest-gpu-nvidia-cuda-13:
+    image: docker.io/localai/localai:latest-gpu-nvidia-cuda-13
+    profiles: ["never"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  latest-gpu-intel:
+    image: docker.io/localai/localai:latest-gpu-intel
+    profiles: ["never"]
+    devices:
+      - /dev/dri:/dev/dri
+
+  latest-gpu-hipblas:
+    image: docker.io/localai/localai:latest-gpu-hipblas
+    profiles: ["never"]
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+
+  latest-gpu-vulkan-nvidia:
+    image: docker.io/localai/localai:latest-gpu-vulkan
+    profiles: ["never"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  latest-gpu-vulkan-amd:
+    image: docker.io/localai/localai:latest-gpu-vulkan
+    profiles: ["never"]
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+
+  latest-gpu-vulkan-intel:
+    image: docker.io/localai/localai:latest-gpu-vulkan
+    profiles: ["never"]
+    devices:
+      - /dev/dri:/dev/dri
+
+  latest-nvidia-l4t-arm64:
+    image: docker.io/localai/localai:latest-nvidia-l4t-arm64
+    profiles: ["never"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  latest-nvidia-l4t-arm64-cuda-13:
+    image: docker.io/localai/localai:latest-nvidia-l4t-arm64-cuda-13
+    profiles: ["never"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  localai:
+    extends:
+      service: ${LOCALAI_IMAGE_VERSION:?You must select a LocalAI image variant}
+    profiles: !reset []
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    ports:
+      - "${LOCALAI_PORT:-11180}:8080"
+    environment:
+      MODELS_PATH: /models
+      LOCALAI_VRAM_WARM_LIMIT: "0"
+    volumes:
+      - "${LOCALAI_STORAGE:?You must specify a local storage directory}/models:/models"
+      - ${LOCALAI_STORAGE}/data:/data
+      - ${LOCALAI_STORAGE}/backends:/backends
+      - ${LOCALAI_STORAGE}/configuration:/configuration
+      - ${LOCALAI_STORAGE}/images:/tmp/generated/images
