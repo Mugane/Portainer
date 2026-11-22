@@ -1,0 +1,45 @@
+services:
+  langflow-postgres:
+    image: postgres:16-trixie
+    container_name: ${CONTAINER_NAME:-langflow}-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: langflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: langflow
+    volumes:
+      - ${LANGFLOW_DATA_DIR:?LANGFLOW_DATA_DIR is required}/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langflow -d langflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  langflow:
+    image: langflowai/langflow:${LANGFLOW_VERSION:-latest}
+    container_name: ${CONTAINER_NAME:-langflow}
+    restart: unless-stopped
+    pull_policy: always
+    user: "0:0"
+    depends_on:
+      langflow-postgres:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -c
+      - |
+        mkdir -p "$${LANGFLOW_CONFIG_DIR}"
+        chown -R 1000:0 "$${LANGFLOW_CONFIG_DIR}"
+        export LANGFLOW_DATABASE_URL="$$(python -c 'import os; from urllib.parse import quote; print("postgresql://langflow:" + quote(os.environ["POSTGRES_PASSWORD"], safe="") + "@langflow-postgres:5432/langflow")')"
+        exec python -c 'import os; os.setgid(0); os.setuid(1000); os.execvp("langflow", ["langflow", "run"])'
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      LANGFLOW_SUPERUSER: ${LANGFLOW_SUPERUSER:-langflow}
+      LANGFLOW_SUPERUSER_PASSWORD: ${LANGFLOW_SUPERUSER_PASSWORD:?LANGFLOW_SUPERUSER_PASSWORD is required}
+      LANGFLOW_AUTO_LOGIN: "false"
+      LANGFLOW_CONFIG_DIR: /app/langflow
+    ports:
+      - "${LANGFLOW_PORT:-7860}:7860"
+    volumes:
+      - ${LANGFLOW_DATA_DIR:?LANGFLOW_DATA_DIR is required}/langflow:/app/langflow
