@@ -77,6 +77,64 @@
 ,
     {
       "type": 3,
+      "name": "langflow",
+      "title": "Langflow",
+      "description": "Visual low-code platform for building, running, and deploying AI agents and workflows.",
+      "categories": ["AI"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/langflow-ai/langflow/main/src/frontend/src/assets/LangflowLogoColor.svg",
+      "notes": "Uses the official Langflow Docker image and PostgreSQL-backed deployment. CONTAINER_NAME controls the Langflow Docker container name; PostgreSQL uses the same prefix with -postgres. LANGFLOW_DATA_DIR is required and must be an absolute host path. The Langflow container starts as root only to create and chown its bind-mounted config directory, then drops to UID 1000 before starting Langflow. PostgreSQL initializes its own data directory. LANGFLOW_SUPERUSER_PASSWORD and POSTGRES_PASSWORD are required and have no defaults. PostgreSQL is private to the stack and is not published on a host port.",
+      "env": [
+        {
+          "name": "CONTAINER_NAME",
+          "label": "Container name",
+          "default": "langflow",
+          "description": "Docker container name for Langflow. PostgreSQL uses this name with the -postgres suffix."
+        },
+        {
+          "name": "LANGFLOW_VERSION",
+          "label": "Image tag",
+          "default": "latest",
+          "description": "Official langflowai/langflow image tag. Pulled on each stack deployment."
+        },
+        {
+          "name": "LANGFLOW_PORT",
+          "label": "Web UI port",
+          "default": "7860",
+          "description": "Host port mapped to Langflow's container port 7860."
+        },
+        {
+          "name": "LANGFLOW_DATA_DIR",
+          "label": "Data directory",
+          "default": "",
+          "description": "REQUIRED. Absolute host directory for persistent data. The stack creates langflow/ and postgres/ subdirectories inside it."
+        },
+        {
+          "name": "LANGFLOW_SUPERUSER",
+          "label": "Admin username",
+          "default": "langflow",
+          "description": "Initial Langflow administrator username."
+        },
+        {
+          "name": "LANGFLOW_SUPERUSER_PASSWORD",
+          "label": "Admin pass",
+          "default": "",
+          "description": "REQUIRED. Set a strong initial Langflow administrator password. No default password is supplied."
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "PostgreSQL pass",
+          "default": "",
+          "description": "REQUIRED. Set a strong PostgreSQL password. No default password is supplied."
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/Mugane/Portainer",
+        "stackfile": "templates/langflow/docker-compose.yml"
+      }
+    },
+    {
+      "type": 3,
       "name": "localai",
       "title": "LocalAI",
       "description": "Open-source AI engine with integrated web UI and OpenAI-compatible API. Supports LLMs, vision, audio, image and video generation.",
