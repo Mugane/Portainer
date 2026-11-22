@@ -118,7 +118,7 @@ AI:
 - [Unsloth](https://github.com/unslothai/unsloth) - Model fine tuning/training
 - [Heretic](https://github.com/p-e-w/heretic) (abliteration) - see https://github.com/dreamfast/heretic-docker/ as an example
 - [Open Code](https://github.com/anomalyco/opencode) - The open source AI coding agent
-- [Open-Webui](https://github.com/open-webui/open-webui)
+- [Open-Webui](https://github.com/open-webui/open-webui) [as93](https://portainer-templates.as93.net/open-webui)
 - [Bolt.diy](https://github.com/stackblitz-labs/bolt.diy) Prompt, run, edit, and deploy full-stack web apps ([docs](https://stackblitz-labs.github.io/bolt.diy/))
 - [Ollama](https://github.com/ollama/ollama)
 - [Dr. Zero](https://github.com/facebookresearch/drzero) Self-evolving search agents without training data (from Facebook Research)
