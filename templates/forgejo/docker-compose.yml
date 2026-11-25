@@ -1,0 +1,48 @@
+services:
+  forgejo-ui:
+    image: codeberg.org/forgejo/forgejo:${FORGEJO_VERSION:-17}
+    container_name: ${CONTAINER_NAME:-forgejo}-ui
+    restart: unless-stopped
+    depends_on:
+      - forgejo-db
+    environment:
+      FORGEJO__database__DB_TYPE: postgres
+      FORGEJO__database__HOST: forgejo-db:5432
+      FORGEJO__database__NAME: forgejo
+      FORGEJO__database__USER: forgejo
+      FORGEJO__database__PASSWD__FILE: /run/secrets/postgres_password
+      FORGEJO__database__SSL_MODE: disable
+      FORGEJO__server__SSH_PORT: "${FORGEJO_SSH_PORT:-2525}"
+      FORGEJO__server__SSH_LISTEN_PORT: "2222"
+    ports:
+      - "${FORGEJO_HTTP_PORT:-8939}:3000"
+      - "${FORGEJO_SSH_PORT:-2525}:2222"
+    volumes:
+      - "${FORGEJO_DATA_DIR:?Data folder is required.}/data:/data"
+      - "${FORGEJO_DATA_DIR}/secrets:/run/secrets:ro"
+
+  forgejo-db:
+    image: postgres:19
+    container_name: ${CONTAINER_NAME:-forgejo}-db
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - |
+        mkdir -p "$$PGDATA"
+        chown -R 999:999 /var/lib/postgresql
+        chmod 700 "$$PGDATA"
+        f=/run/secrets/postgres_password
+        if [ ! -s "$$f" ]; then
+          umask 077
+          head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n' > "$$f"
+        fi
+        chown 999:1000 "$$f"
+        chmod 0440 "$$f"
+        exec docker-entrypoint.sh postgres
+    environment:
+      POSTGRES_USER: forgejo
+      POSTGRES_DB: forgejo
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    volumes:
+      - "${FORGEJO_DATA_DIR}/postgres:/var/lib/postgresql"
+      - "${FORGEJO_DATA_DIR}/secrets:/run/secrets"

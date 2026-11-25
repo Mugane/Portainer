@@ -1,0 +1,57 @@
+{
+  "type": 3,
+  "name": "forgejo",
+  "title": "Forgejo",
+  "description": "Self-hosted Git service for hosting repositories, code review, issue tracking, and collaboration.",
+  "categories": [ "DevOps" ],
+  "platform": "linux",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg",
+  "notes": "Uses the official Forgejo rootless container image. Available image tags and releases: https://codeberg.org/forgejo/-/packages/container/forgejo/versions?q=&sort=created_desc&tagged=tagged. FORGEJO_DATA_DIR is required and must be an absolute host path. The directory must be owned by UID/GID 1000:1000. Persistent data is stored in FORGEJO_DATA_DIR. The SSH host port is advertised in SSH clone URLs. Complete the initial setup in the web interface; the first registered account becomes an administrator.",
+  "env": [
+    {
+      "name": "CONTAINER_NAME",
+      "label": "Container name",
+      "default": "forgejo",
+      "description": "Base name used for the Forgejo and PostgreSQL Docker container names."
+    },
+    {
+      "name": "FORGEJO_VERSION",
+      "label": "Version:",
+      "default": "17",
+      "description": "Select the Forgejo image tag. View available tags and releases: https://codeberg.org/forgejo/-/packages/container/forgejo/versions?q=&sort=created_desc&tagged=tagged",
+      "select": [
+        {
+          "text": "17.x (latest v17)",
+          "value": "17",
+          "default": true
+        },
+        {
+          "text": "15.x (latest v15)",
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "name": "FORGEJO_DATA_DIR",
+      "label": "Data folder",
+      "default": "",
+      "description": "REQUIRED. Absolute path on the Docker host for Forgejo's persistent data, configuration, repositories, and SQLite database. The directory must be owned by UID/GID 1000:1000."
+    },
+    {
+      "name": "FORGEJO_HTTP_PORT",
+      "label": "Web UI host port",
+      "default": "8939",
+      "description": "Host port mapped to Forgejo's HTTP port 3000."
+    },
+    {
+      "name": "FORGEJO_SSH_PORT",
+      "label": "SSH host port",
+      "default": "2525",
+      "description": "Host port mapped to Forgejo's rootless SSH port 2222. This value is also advertised in SSH clone URLs."
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/Mugane/Portainer",
+    "stackfile": "templates/forgejo/docker-compose.yml"
+  }
+}
