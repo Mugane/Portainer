@@ -3,7 +3,7 @@
   "name": "orca",
   "title": "Orca Web UI",
   "description": "Headless Orca server (AI agent orchestrator) with its web UI.",
-  "categories": ["AI", "Development"],
+  "categories": [ "AI" ],
   "platform": "linux",
   "logo": "https://avatars.githubusercontent.com/u/127256420?s=60&v=4",
   "notes": "Builds Orca from the official Linux AppImage and runs its headless web server.",

@@ -3,7 +3,7 @@
   "name": "phpmyadmin",
   "title": "phpMyAdmin",
   "description": "Web interface for administering MySQL and MariaDB databases.",
-  "categories": ["Database", "Development"],
+  "categories": [ "Databases" ],
   "platform": "linux", 
   "logo": "https://upload.wikimedia.org/wikipedia/commons/9/95/PhpMyAdmin_logo.png",
   "notes": "This installation allows access to any database hosts.",

@@ -2,7 +2,7 @@
   "type": 3,
   "title": "NGINX Hello World",
   "description": "NGINX webserver that serves a simple page containing its hostname, IP address and port as well as the request URI and the local time of the webserver.",
-  "categories": [ "Servers", "Development" ],
+  "categories": [ "Servers", "DevOps" ],
   "platform": "linux", 
   "logo": "https://nginx.org/nginx.png",
   "notes": "",

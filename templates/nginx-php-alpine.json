@@ -2,7 +2,7 @@
   "type": 3,
   "title": "NGINX & PHP (Alpine)",
   "description": "PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux (trafex/php-nginx)",
-  "categories": [ "Servers", "Development" ],
+  "categories": [ "Servers", "DevOps" ],
   "platform": "linux", 
   "logo": "https://nginx.org/nginx.png",
   "notes": "Valid PHP/NGINX image versions are listed on the [Docker hub](https://hub.docker.com/r/trafex/php-nginx)",

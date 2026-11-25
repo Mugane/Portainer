@@ -3,7 +3,7 @@
   "name": "localai",
   "title": "LocalAI",
   "description": "Open-source AI engine with integrated web UI and OpenAI-compatible API. Supports LLMs, vision, audio, image and video generation.",
-  "categories": ["AI"],
+  "categories": [ "AI" ],
   "platform": "linux",
   "logo": "https://raw.githubusercontent.com/mudler/LocalAI/master/core/http/static/logo.png",
   "env": [

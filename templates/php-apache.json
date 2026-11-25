@@ -3,7 +3,7 @@
   "name": "php-apache",
   "title": "PHP/Apache (Debian)",
   "description": "The official PHP/Apache image on Debian Linux (php:latest) with selectable version and other options",
-  "categories": [ "Servers", "Development" ],
+  "categories": [ "Servers", "DevOps" ],
   "platform": "linux", 
   "logo": "https://www.php.net/images/logos/new-php-logo.svg",
   "notes": "Valid PHP image versions are listed on the [Docker hub](https://hub.docker.com/_/php/tags)",

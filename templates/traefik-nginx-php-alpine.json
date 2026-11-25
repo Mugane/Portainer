@@ -3,7 +3,7 @@
   "name": "traefik",
   "title": "Traefik: NGINX & PHP (Alpine)",
   "description": "Reverse-proxied PHP-FPM 8.3 & Nginx 1.24 on Alpine Linux (trafex/php-nginx). Uses Traefik to manage ACME SSL certificates. Ensure you are run the Traefik: SSL Reverse Proxy Manager before deployment.",
-  "categories": [ "Servers", "Production", "Traefik", "HTTPS" ],
+  "categories": [ "Servers", "Proxies" ],
   "platform": "linux", 
   "logo": "https://nginx.org/nginx.png",
   "notes": "Valid PHP/NGINX image versions are listed on the [Docker hub](https://hub.docker.com/r/trafex/php-nginx)",

@@ -3,7 +3,7 @@
   "name": "git-http",
   "title": "Git HTTP Server (Alpine)",
   "description": "A lightweight Git-over-http server that allows git requests to a specified local repository folder.",
-  "categories": [ "Servers", "Development" ],
+  "categories": [ "DevOps", "Servers" ],
   "platform": "linux", 
   "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
   "notes": "",
