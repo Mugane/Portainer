@@ -76,12 +76,10 @@
     {
       "type": 3,
       "name": "git-http",
-      "title": "Git HTTP Server (Alpine)",
-      "description": "A lightweight Git-over-http server that allows git requests to a specified local repository folder.",
+      "title": "Git HTTP Server",
+      "description": "A lightweight (Alpine) server that answers git clone requests over http/s to a specified repository folder. It serves repository contents to Git clients. It does nothing else. You get no web UI, accounts, issues, or pull requests (unless you configure HTTP authentication manually).",
       "categories": [ "DevOps", "Servers" ],
-      "platform": "linux", 
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
-      "notes": "",
+      "platform": "linux",
       "env": [
         {
           "name": "CONTAINER_NAME",
@@ -98,8 +96,8 @@
         {
           "name": "REPO_ROOT",
           "label": "Repository folder",
-          "default": "\"C:\\\\Users\\\\Admin\\\\Documents\\\\Docker\\\\Projects\\\\Project Name\\\\app\"",
-          "description": "Path on host to use for the Git repository to serve. For Windows, enclose in quotes and escape path separators with double-backslashes."
+          "default": "",
+          "description": "Path on host to use for the Git repository to serve. For Windows, escape path separators as double-backslashes (e.g. C:\\\\Docker\\\\app\\\\data ). For Linux, use only full paths, (e.g. /home/user/app/data ). If the path contains spaces, enclose in double-quotes."
         },
         {
           "name": "RESTART",
@@ -129,7 +127,8 @@
       "repository": {
         "url": "https://github.com/Mugane/Portainer",
         "stackfile": "templates/git-http/docker-compose.yml"
-      }
+      },
+      "logo": "data:image/png;base64,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"
     }
 ,
     {
