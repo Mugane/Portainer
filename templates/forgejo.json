@@ -6,7 +6,7 @@
   "categories": [ "DevOps" ],
   "platform": "linux",
   "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/forgejo.svg",
-  "notes": "Uses the official Forgejo rootless container image. Available image tags and releases: https://codeberg.org/forgejo/-/packages/container/forgejo/versions?q=&sort=created_desc&tagged=tagged. FORGEJO_DATA_DIR is required and must be an absolute host path. The directory must be owned by UID/GID 1000:1000. Persistent data is stored in FORGEJO_DATA_DIR. The SSH host port is advertised in SSH clone URLs. Complete the initial setup in the web interface; the first registered account becomes an administrator.",
+  "note": "Forgejo (FOOS Gitea fork) container image. Creates a random password for PostgreSQL using <a target='_blank' href='https://docs.docker.com/compose/how-tos/use-secrets/'>docker compose secrets</a>. When initializing Forgejo, don't change this password (it auto-populates).",
   "env": [
     {
       "name": "CONTAINER_NAME",
@@ -35,7 +35,7 @@
       "name": "FORGEJO_DATA_DIR",
       "label": "Data folder",
       "default": "",
-      "description": "REQUIRED. Absolute path on the Docker host for Forgejo's persistent data, configuration, repositories, and SQLite database. The directory must be owned by UID/GID 1000:1000."
+      "description": "REQUIRED. Absolute path on the Docker host for Forgejo's persistent data, configuration, repositories, and SQLite database."
     },
     {
       "name": "FORGEJO_HTTP_PORT",

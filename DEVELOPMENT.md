@@ -139,3 +139,23 @@ OSINT:
 - []()
 
 -->
+
+## Upgrading Portainer
+
+The version of Portainer is pegged to a specific release. From time to time, this version will be updated. In order to ensure that breaking changes can be rolled back, follow this procedure:
+
+1. Change the value of the image in the docker-compose.yml file under the "services" -> "portainer" section, e.g. `image: portainer/portainer-ce:2.45.3`
+2. Run these commands to back up the existing Portainer data and pull the new image:
+   ```bash
+   # Backup to, e.g. portainer-data-2.20.3-20261127-112125.tar.gz:
+   tar -czf "portainer-data-$(docker inspect "$(docker compose ps -a -q | head -n1)" --format '{{.Config.Image}}' | awk -F: '{print $NF}')-$(date +%Y%m%d-%H%M%S).tar.gz" ./data
+   docker compose stop
+   docker compose up -d --no-deps --force-recreate
+   ```
+3. If there is a problem, roll back by changing the version in docker-compose.yml back and then running:
+   ```bash
+   docker compose stop
+   mv ./data "./data-$(docker inspect "$(docker compose ps -a -q | head -n1)" --format '{{.Config.Image}}' | awk -F: '{print $NF}')-failed"
+   tar -xzf "$(ls -t portainer-data-*.tar.gz | head -1)" # restores from the latest backup
+   docker compose up -d --no-deps --force-recreate
+   ```

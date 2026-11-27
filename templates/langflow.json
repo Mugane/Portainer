@@ -6,7 +6,7 @@
   "categories": [ "AI" ],
   "platform": "linux",
   "logo": "https://raw.githubusercontent.com/langflow-ai/langflow/main/src/frontend/src/assets/LangflowLogoColor.svg",
-  "notes": "Uses the official Langflow Docker image and PostgreSQL-backed deployment. CONTAINER_NAME controls the Langflow Docker container name; PostgreSQL uses the same prefix with -postgres. LANGFLOW_DATA_DIR is required and must be an absolute host path. The Langflow container starts as root only to create and chown its bind-mounted config directory, then drops to UID 1000 before starting Langflow. PostgreSQL initializes its own data directory. LANGFLOW_SUPERUSER_PASSWORD and POSTGRES_PASSWORD are required and have no defaults. PostgreSQL is private to the stack and is not published on a host port.",
+  "note": "Uses the official Langflow Docker image and PostgreSQL-backed deployment. CONTAINER_NAME controls the Langflow Docker container name; PostgreSQL uses the same prefix with -postgres. LANGFLOW_DATA_DIR is required and must be an absolute host path. The Langflow container starts as root only to create and chown its bind-mounted config directory, then drops to UID 1000 before starting Langflow. PostgreSQL initializes its own data directory. LANGFLOW_SUPERUSER_PASSWORD and POSTGRES_PASSWORD are required and have no defaults. PostgreSQL is private to the stack and is not published on a host port.",
   "env": [
     {
       "name": "CONTAINER_NAME",
