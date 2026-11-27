@@ -1,11 +1,12 @@
 {
   "type": 3,
   "name": "git-http",
-  "title": "Git HTTP Server (Alpine)",
-  "description": "A lightweight Git-over-http server that allows git requests to a specified local repository folder.",
+  "title": "Git HTTP Server",
+  "description": "A lightweight (Alpine) server that allows git requests over http/s to a specified repository folder. It serves repository contents to Git clients. It does nothing else. You get no web UI, accounts, issues or pull requests. Standard HTTP authentication can be configured manually but is not enabled by default.",
   "categories": [ "DevOps", "Servers" ],
   "platform": "linux", 
-  "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
+  "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAABqlBMVEX//////v75u7D0emTxWT3zd2H5ua32lYTwUDP2koD//v30f2rzeGH++fj0hHD0fGb1iXX0gWz1infzdF3+8O32l4b1jnz2l4XzcVn96ub1jHn0e2X//f3zeGL1hXH+9fP3opL0g270gm31i3jzdV71kH30fWj0g2/2mYj0fmnzc1z2m4v++Pf5uKz82tT95eH7zcX2m4ryY0n0gGv/+/r1hnL+7+3xWD31jnv71s/3n4/yZk3819H0gW397On82dL+9/bwUTX+8vD4rJ72kX/5vLH95+PzdmD1inbxYEbybFTxVzv5uK3ybVXxXkT/+vn70MjzcFnzclv0f2n2lYPya1LwVDj+9fT6ycHzb1f2mIf3oJH1jXr5vrT+9/X4qZrzcFj+7uvyZUvwUjX708z94t3wVTnxXkPxVjr3ppf2kX77zMPxXEHxYEX96+j//Pz96uf95uL4q53xW0D3ppj6x73xWj/819D829X95uH95OD3no383tn839r4r6HyZEr5tqr4sKPyalH83df4qZvxWDz3opP6xr36wbbzblbwUzf70sv4qJnyZ018nEzzAAADP0lEQVR4AezXg5YzTRjE8VrXG60ZvLZt27Zt25950R+imfT2dKaSzuH+bqDOs+f0f7IA0IYpU6b41N7R2dnVjZbqYdE0tE4iybJUGq2SYVUvWiPRx5D+dKvvaNUtiWk0DKThWy8nGYRfQ8O0GIFXo7Qag0/jXbSagFdZWqUS8CiXp1UBPkyfkUPRTBo8FmYWZ6OobQ6tev20ZC5K5tHgKIzekvkoUW7RW7IARW3mLXphXC1ZiJJFDPgpzDADi1G0ZOmy5StWrvJXmDzDViOwZthXYXpYaxQhE34Kk6Rp7brQLet9FGYDJ9uIwCZHYZQ3aNqcQGBL868yQ4utCNnW7KvM9dX/RG23F2ZHs9+OnbsQ2E2rRYgnsYcR9iKwbz+tDqTFlpgOrkEgcaiJwgwz2uA2BJYM0mpEbYnp8JHw/+RHG/wN00O3YwBw/ET5lpO0mlBbYvuLt23uQskp/TcMNrCeOfjfaZ5B0Y6jtCpILbGPFKpNPr5f/O5nGHdkPlm55fhZ8pyrMGZLlJHqLecv7Fu3sftivMJkKY5wAiGX4hTmDOURXkbIapquwHCV1Ec48xqqjp+j6Tpq3WhohDcRWEnTLdS63dBIHiF3aDqMWjv1EbOFd2m6h1pHGxrJui+5j1p7Gxp5gJCHNM2C4VEjI3yMqmtPaHj6DKZFjYwcfI6KAzS9gAk7+qmP8NRLlLyi4fUJx8ddG+G5N8uB82/P0nBvHFbpfmUkcHTRO5pev0eUgjDi9HockRIpPyPnPsBlgm6DcUbuf4TbWIxfKxik0yfUM0KHnXvxv8/OO76gvkFGevIVJd8YbRwxpA8wwvdxVFyPvGM73OoV5gcEnup3xCrM7XEEfmTA0RL534cbjk+UuyVCYZIIeUEqLYldmJ8Q8rPQEqkw4wi8EloiFeYXVD1fL7REKsyv+1Dxm9ASsTCHf0fJsNASvTA9G4+33fzjT/cb1KQHLB3+/pfSEuFVut17AZ37VYpvUL9FaIkknaLTub/hQ4EOrz9CIBRGaoleGL0lemH0luiF0VuiF0ZtiS59RW8JdBm9JbpEn94S6DJ6S3SJpN4S6P5dFrRfW8lAS9AjUczSK2DHMEjAKBgFAAa1wwWhqknOAAAAAElFTkSuQmCC",
+  "note": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
   "notes": "",
   "env": [
     {
